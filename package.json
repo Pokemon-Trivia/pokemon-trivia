@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "db:schema": "psql -d pokemon_trivia -f ./pokemon-trivia-backend/db/schema.sql"
   },
   "dependencies": {
     "react": "^19.2.0",
