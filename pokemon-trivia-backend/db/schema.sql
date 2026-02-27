@@ -14,6 +14,7 @@ CREATE TABLE friends (
    friend_user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE
 );
 
+-- This is so we can not have duplicate pairings and for easier searching for future friend calls
 CREATE UNIQUE INDEX no_duplicate_friends ON friends (
    LEAST(user_id, friend_user_id),
    GREATEST(user_id, friend_user_id)
