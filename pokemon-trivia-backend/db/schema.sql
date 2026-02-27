@@ -10,6 +10,10 @@ CREATE TABLE users (
 
 CREATE TABLE friends (
    user_id INTEGER NOT NULL REFERENCES users(id),
-   friend_user_id INTEGER NOT NULL REFERENCES users(id),
-   UNIQUE(user_id, friend_user_id)
+   friend_user_id INTEGER NOT NULL REFERENCES users(id)
 );
+
+CREATE UNIQUE INDEX no_duplicate_friends ON friends (
+   LEAST(user_id, friend_user_id),
+   GREATEST(user_id, friend_user_id)
+)
