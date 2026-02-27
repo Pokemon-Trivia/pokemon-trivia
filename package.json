@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "nodemon --env-file=.env pokemon-trivia-backend/server.js",
-    "db:schema": "psql -d pokemon_trivia -f ./pokemon-trivia-backend/db/schema.sql"
+    "db:schema": "psql -d pokemon_trivia -f pokemon-trivia-backend/db/schema.sql",
+    "db:seed": "node --env-file=.env pokemon-trivia-backend/db/seed.js",
+    "db:reset": "npm run db:schema && db:seed"
   },
   "dependencies": {
     "react": "^19.2.0",
