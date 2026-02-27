@@ -1,5 +1,5 @@
 import db from './client.js'
-import { createUser } from './queries/users'
+import { createUser } from './queries/users.js';
 
 const seed = async() => {
    for (let userCount = 1; userCount <= 5; userCount++) {
@@ -8,10 +8,11 @@ const seed = async() => {
          password: 'password',
          highScore: userCount + 8
       }
-      await createUser(newUser)
+      await createUser(newUser);
    }
 }
 
 await db.connect();
 await seed();
 await db.end();
+console.log("Database seeded 🌱")
