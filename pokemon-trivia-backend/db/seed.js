@@ -1,5 +1,5 @@
 import db from './client.js'
-import { createUser } from './queries/users.js';
+import { createUser, findUserIdByUsername, findUsernameById } from './queries/users.js';
 
 const seed = async() => {
    for (let userCount = 1; userCount <= 5; userCount++) {
@@ -10,6 +10,9 @@ const seed = async() => {
       }
       await createUser(newUser);
    }
+
+   await findUserIdByUsername('testUser2')
+   await findUsernameById(3)
 }
 
 await db.connect();

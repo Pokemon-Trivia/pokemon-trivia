@@ -21,8 +21,9 @@ export const findUsernameById = async(id) => {
    `;
 
    const {rows: [foundUser]} = await db.query(sql, [id])
-   console.log(foundUser)
-   return foundUser;
+   if (!foundUser) return foundUser;
+   const foundUsername = foundUser.username;
+   return foundUsername;
 }
 
 export const findUserIdByUsername = async(username) => {
@@ -32,6 +33,7 @@ export const findUserIdByUsername = async(username) => {
    `;
 
    const {rows: [foundUser]} = await db.query(sql, [username]);
-   console.log(foundUser)
-   return foundUser;
+   if (!foundUser) return foundUser;
+   const foundUserId = foundUser.id;
+   return foundUserId;
 }
