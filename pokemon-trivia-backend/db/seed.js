@@ -1,6 +1,6 @@
 import db from './client.js'
 import { addFriend } from './queries/friends.js';
-import { createUser, findUserIdByUsername, findUsernameById } from './queries/users.js';
+import { createUser } from './queries/users.js';
 
 const seed = async() => {
    for (let userCount = 1; userCount <= 5; userCount++) {
