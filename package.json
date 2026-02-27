@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "node --env-file=.env pokemon-trivia-backend/server.js",
-    "dev": "node --watch --env-file=.env pokemon-trivia-backend/server.js",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "start": "nodemon --env-file=.env pokemon-trivia-backend/server.js",
     "db:schema": "psql -d pokemon_trivia -f ./pokemon-trivia-backend/db/schema.sql"
   },
   "dependencies": {
