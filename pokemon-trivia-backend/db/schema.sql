@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS friends;
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE users (
    id SERIAL PRIMARY KEY,
    username VARCHAR(30) NOT NULL,
