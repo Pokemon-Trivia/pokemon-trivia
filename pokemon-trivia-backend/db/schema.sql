@@ -5,5 +5,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE friends (
-
-)
+   user_id INTEGER NOT NULL REFERENCES users(id),
+   friend_user_id INTEGER NOT NULL REFERENCES users(id),
+   UNIQUE(user_id, friend_user_id)
+);
