@@ -4,7 +4,8 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
    id SERIAL PRIMARY KEY,
    username VARCHAR(30) NOT NULL,
-   password VARCHAR(100) NOT NULL
+   password VARCHAR(100) NOT NULL,
+   high_score INTEGER
 );
 
 CREATE TABLE friends (
