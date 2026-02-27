@@ -16,7 +16,7 @@ const seed = async() => {
       if (i === 1 || i === 2) {
          await addFriend(i, i + 1)
       } else if (i === 3) {
-         await addFriend(i, i - 1)
+         await addFriend(i, i + 2)
       }
    }
 }
