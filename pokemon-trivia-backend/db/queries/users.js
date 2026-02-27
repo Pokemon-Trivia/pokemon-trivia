@@ -13,3 +13,25 @@ export const createUser = async({username, password, highScore}) => {
    const token = jwt.sign({user}, process.env.JWT_SECRET)
    return token;
 }
+
+export const findUsernameById = async(id) => {
+   const sql = `
+      SELECT * FROM users
+      WHERE users.id = $1
+   `;
+
+   const {rows: [foundUser]} = await db.query(sql, [id])
+   console.log(foundUser)
+   return foundUser;
+}
+
+export const findUserIdByUsername = async(username) => {
+   const sql = `
+      SELECT * FROM users
+      WHERE users.username = $1
+   `;
+
+   const {rows: [foundUser]} = await db.query(sql, [username]);
+   console.log(foundUser)
+   return foundUser;
+}
