@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "node --env-file=.env pokemon-trivia-backend/server.js",
+    "dev": "node --watch --env-file=.env pokemon-trivia-backend/server.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
