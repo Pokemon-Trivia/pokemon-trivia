@@ -1,8 +1,30 @@
+import { useState } from "react";
+import { useAuth } from "./AuthContext";
+import { useNavigate } from "react-router";
+
 export default function Register() {
+  const { register } = useAuth();
+  const [error, setError] = useState();
+  const navigate = useNavigate();
+
+  const tryRegister = async (e) => {
+    e.preventDefault();
+    setError(null);
+    const formData = new FormData(e.target);
+    const username = formData.get("username");
+    const password = formData.get("password");
+
+    try {
+      await register({ username, password });
+      navigate("/home");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
   return (
     <>
-      <h1>Pokemon Trivia</h1>
-      <form>
+      <h1 id="register-header">Pokemon Trivia</h1>
+      <form onSubmit={tryRegister}>
         <label>
           Username
           <input type="text" name="username" required></input>
@@ -13,7 +35,7 @@ export default function Register() {
         </label>
         <button type="submit">Register</button>
       </form>
-      <p>Already have an account?</p>
+      <p>Already have an account? Log in here.</p>
     </>
   );
 }
