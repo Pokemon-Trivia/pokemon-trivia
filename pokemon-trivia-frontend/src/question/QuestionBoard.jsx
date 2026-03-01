@@ -1,4 +1,5 @@
 import { Query } from "pg"
+import PokeImage from "./PokeImage";
 
 const QuestionBoard = () => {
    return (
