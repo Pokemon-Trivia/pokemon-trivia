@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-   "imports": {
+  "imports": {
     "#*": "./*.js"
   },
   "scripts": {
@@ -17,13 +17,14 @@
     "db:reset": "npm run db:schema && npm run db:seed"
   },
   "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
     "bcrypt": "^6.0.0",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "nodemon": "^3.1.14",
-    "pg": "^8.19.0"
+    "pg": "^8.19.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router": "^7.13.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
