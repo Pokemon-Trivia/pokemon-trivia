@@ -8,4 +8,8 @@ const AnswerList = ({answerList}) => {
    )
 }
 
+const AnswerListItem = ({answer}) => {
+   <li>{answer}</li>
+}
+
 export default AnswerList;
