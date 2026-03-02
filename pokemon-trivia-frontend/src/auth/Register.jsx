@@ -47,10 +47,7 @@ export default function Register() {
         <button type="submit">Register</button>
       </form>
       {error ? (
-        <div>
-          <p id="error-msg">{error}</p>
-          <p>Please log in here.</p>
-        </div>
+        <p id="error-msg">{error}</p>
       ) : (
         <p>Already have an account? Log in</p>
       )}
