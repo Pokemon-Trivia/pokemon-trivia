@@ -17,7 +17,6 @@ const QuestionBoard = () => {
    const getPokemonData = async() => {
       const pokeId = randomId();
       const pokemonData = await getPokemon(pokeId);
-      console.log('Pokemon Data', pokemonData)
       setCurrPokemon(pokemonData)
    }
 
@@ -61,7 +60,6 @@ const QuestionBoard = () => {
       const answerList = ([rightAnswer, ...wrongAnswers])
       const randomAnswerList = answerShuffle(answerList)
       setAnswers(randomAnswerList)
-      
    }
 
    useEffect(() => {
