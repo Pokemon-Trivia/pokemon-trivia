@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PokeImage from "./PokeImage";
 import Question from "./Question";
 import AnswerList from "./AnswerList";
-import { getPokemon } from "../api/questions";
+import { getPokemon, getTypes } from "../api/questions";
 
 
 
@@ -15,9 +15,19 @@ const QuestionBoard = () => {
    const [questionCount, seQuestionCount] = useState(1);
 
    const getPokemonData = async() => {
-      const pokemonData = await getPokemon(6);
+      const pokeId = randomId();
+      const pokemonData = await getPokemon(pokeId);
       console.log('Pokemon Data', pokemonData)
       setCurrPokemon(pokemonData)
+   }
+
+   const randomId = () => {
+      const newId = Math.floor(Math.random() * 1025) + 1;
+      if (previousPokemon.includes(newId)) {
+         return randomId();
+      } else {
+         return newId;
+      }
    }
 
    const answerShuffle = () => {
@@ -39,7 +49,7 @@ const QuestionBoard = () => {
       <section>
          <PokeImage />
          <Question />
-         <AnswerList />
+         {/* <AnswerList /> */}
       </section>
    )
 }

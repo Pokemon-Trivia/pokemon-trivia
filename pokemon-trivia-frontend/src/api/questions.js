@@ -17,3 +17,14 @@ export const getPokemon = async(id) => {
       console.log(error)
    }
 }
+
+export const getTypes = async() => {
+   try {
+      const response = await fetch(API + `type?limit=18`);
+      const types = await response.json();
+      const typesList = types.results.map((type) => type.name.charAt(0).toUpperCase() + type.name.slice(1));
+      return typesList;
+   } catch (error) {
+      console.log(error)
+   }
+} 
