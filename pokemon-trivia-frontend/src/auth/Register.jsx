@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 export default function Register() {
   const { register } = useAuth();
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const tryRegister = async (e) => {
@@ -35,7 +35,14 @@ export default function Register() {
         </label>
         <button type="submit">Register</button>
       </form>
-      <p>Already have an account? Log in here.</p>
+      {error ? (
+        <div>
+          <p id="error-msg">{error}</p>
+          <p>Please log in here.</p>
+        </div>
+      ) : (
+        <p>Already have an account? Log in here.</p>
+      )}
     </>
   );
 }

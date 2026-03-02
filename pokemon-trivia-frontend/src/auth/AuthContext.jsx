@@ -20,7 +20,6 @@ export default function AuthProvider({ children }) {
     });
 
     const result = await response.json();
-    console.log("RESULT", result);
     if (!response.ok) {
       throw Error(result.message);
     }

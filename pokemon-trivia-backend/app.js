@@ -10,12 +10,12 @@ app.use("/users", userRouter);
 
 app.use((err, req, res, next) => {
   if (err.code === "23505") {
-    return res.status(409).send("Username already exist.");
+    return res.status(409).json({ message: "Username already exist." });
   }
   next(err);
 });
 
 app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).send("Sorry! Something went wrong.");
+  res.status(500).json({ message: "Sorry! Something went wrong." });
+  console.error(err.message);
 });
