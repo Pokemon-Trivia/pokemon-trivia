@@ -15,7 +15,7 @@ router.post("/register", async (req, res, next) => {
 
     const token = await createUser({ username, password });
 
-    res.status(201).send(token);
+    res.status(201).send({ token });
   } catch (error) {
     next(error);
   }

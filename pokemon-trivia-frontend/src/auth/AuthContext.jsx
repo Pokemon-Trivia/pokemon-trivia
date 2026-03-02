@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -12,22 +12,21 @@ export default function AuthProvider({ children }) {
     }
   }, []);
 
-  const register = async (username, password) => {
+  const register = async (credentials) => {
     const response = await fetch("/users/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify(credentials),
     });
 
-    console.log("RESPONSE", response.status);
     const result = await response.json();
-    console.log("DATA", result);
-
     if (!response.ok) {
       throw Error(result.message);
     }
+
     setToken(result.token);
     localStorage.setItem("token", result.token);
+    return result;
   };
 
   const logout = () => {
