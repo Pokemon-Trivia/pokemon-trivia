@@ -30,25 +30,53 @@ const QuestionBoard = () => {
       }
    }
 
+   const randomTypeIndex = (array, rightAnswer) => {
+      const newTypeIndex = Math.floor(Math.random() * 18);
+      if (array.includes(types[newTypeIndex]) || types[newTypeIndex] === rightAnswer) {
+         return randomTypeIndex(array, rightAnswer);
+      } else {
+         return types[newTypeIndex];
+      }
+   }
+
    const getPokemonTypes = async() => {
       setTypes(await getTypes());
    }
 
-   const answerShuffle = () => {
-      const newAnswers = answers;
-      for (let i = answers.length -1; i > 0; i--) {
-         const j = Math.floor(Math.random() * (i + 1))
-         [newAnswers[i], newAnswers[j] = [newAnswers[j], newAnswers[i]]];
+   const answerShuffle = (answerArray, rightAnswer) => {
+      for (let i = answerArray.length -1; i > 0; i--) {
+         const j = Math.floor(Math.random() * (i + 1));
+         [answerArray[i], answerArray[j]] = [answerArray[j], answerArray[i]];
       }
-      console.log(newAnswers)
+      return answerArray
+   }
+
+   const createAnswerList = () => {
+      const rightAnswer = currPokemon.type;
+      const wrongAnswers = []
+      while (wrongAnswers.length < 3) {
+         const newType = randomTypeIndex(wrongAnswers, rightAnswer);
+         wrongAnswers.push(newType)
+      }
+      const answerList = ([rightAnswer, ...wrongAnswers])
+      const randomAnswerList = answerShuffle(answerList)
+      setAnswers(randomAnswerList)
+      
    }
 
    useEffect(() => {
       getPokemonData();
+   }, [questionCount])
+
+   useEffect(() => {
       getPokemonTypes();
    }, [])
 
-   if (!currPokemon) return <p>Loading</p>
+   useEffect(() => {
+      if (currPokemon && types.length > 0) createAnswerList();
+   }, [currPokemon, types])
+
+   if (!currPokemon) return <p>Loading...</p>
 
    return (
       <section>
