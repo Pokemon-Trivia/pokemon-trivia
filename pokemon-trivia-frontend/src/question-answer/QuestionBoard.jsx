@@ -80,9 +80,9 @@ const QuestionBoard = () => {
 
    return (
       <section>
-         <PokeImage />
-         <Question />
-         {/* <AnswerList /> */}
+         <PokeImage imgUrl={currPokemon.imgUrl} name={currPokemon.name} />
+         <Question name={currPokemon.name} />
+         <AnswerList answerList={answers} />
       </section>
    )
 }
