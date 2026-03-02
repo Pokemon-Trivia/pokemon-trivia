@@ -13,6 +13,12 @@ export default function Register() {
     const formData = new FormData(e.target);
     const username = formData.get("username");
     const password = formData.get("password");
+    const confirmPassword = formData.get("confirmPassword");
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match. Please try again.");
+      return;
+    }
 
     try {
       await register({ username, password });
@@ -23,7 +29,8 @@ export default function Register() {
   };
   return (
     <>
-      <h1 id="register-header">Pokemon Trivia</h1>
+      <h1 id="register-header">Pokémon Trivia</h1>
+      <p>Create your Pokémon account</p>
       <form onSubmit={tryRegister}>
         <label>
           Username
@@ -33,6 +40,10 @@ export default function Register() {
           Password
           <input type="password" name="password" required></input>
         </label>
+        <label>
+          Confirm password
+          <input type="password" name="confirmPassword" required></input>
+        </label>
         <button type="submit">Register</button>
       </form>
       {error ? (
@@ -41,7 +52,7 @@ export default function Register() {
           <p>Please log in here.</p>
         </div>
       ) : (
-        <p>Already have an account? Log in here.</p>
+        <p>Already have an account? Log in</p>
       )}
     </>
   );
