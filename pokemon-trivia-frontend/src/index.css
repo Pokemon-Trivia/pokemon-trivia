@@ -1,0 +1,94 @@
+/* Styling for Register page */
+.authPage {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-image: url("./assets/background.png");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+.registerCard {
+  width: min(340px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 1.5rem;
+  background-color: white;
+  align-items: center;
+  border-radius: 17px;
+  border: 6px solid rgb(251, 209, 38);
+}
+
+#pokeLogo {
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(72, 72, 72, 0.25));
+  transition: transform 0.3s ease;
+}
+
+#register-header {
+  margin: 0;
+  background: linear-gradient(to right, #ff2d2d, #7c2ae8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 + p {
+  color: rgb(93, 92, 92);
+  font-weight: bolder;
+  margin-top: 0;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5ch 0;
+  color: rgb(93, 92, 92);
+  font-weight: bolder;
+  gap: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  padding-left: 1vh;
+  font-size: 1rem;
+  border-radius: 11px;
+  border: 1px solid rgb(168, 166, 166);
+  box-sizing: border-box;
+}
+
+#registerBtn {
+  background-color: rgb(249, 30, 30);
+  border-radius: 11px;
+  border-style: solid;
+  border-color: rgb(249, 30, 30);
+  padding: 1.25vh;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem;
+  box-sizing: border-box;
+  filter: drop-shadow(0 4px 8px rgba(72, 72, 72, 0.25));
+  transition: transform 0.3s ease;
+}
+
+form + p {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+#error-msg {
+  color: rgb(249, 30, 30);
+}
