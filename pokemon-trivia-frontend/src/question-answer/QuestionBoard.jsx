@@ -30,6 +30,10 @@ const QuestionBoard = () => {
       }
    }
 
+   const getPokemonTypes = async() => {
+      setTypes(await getTypes());
+   }
+
    const answerShuffle = () => {
       const newAnswers = answers;
       for (let i = answers.length -1; i > 0; i--) {
@@ -41,6 +45,7 @@ const QuestionBoard = () => {
 
    useEffect(() => {
       getPokemonData();
+      getPokemonTypes();
    }, [])
 
    if (!currPokemon) return <p>Loading</p>
