@@ -85,8 +85,7 @@ input {
 }
 
 form + p {
-  margin-top: 20px;
-  margin-bottom: 5px;
+  color: rgb(93, 92, 92);
 }
 
 #error-msg {
