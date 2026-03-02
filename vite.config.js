@@ -4,7 +4,6 @@ import react from "@vitejs/plugin-react";
 // https://vite.dev/config/
 export default defineConfig({
   root: "pokemon-trivia-frontend",
-  envDir: "../",
   plugins: [react()],
   server: {
     proxy: {

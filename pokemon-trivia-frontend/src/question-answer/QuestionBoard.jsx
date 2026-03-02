@@ -20,6 +20,15 @@ const QuestionBoard = () => {
       setCurrPokemon(pokemonData)
    }
 
+   const answerShuffle = () => {
+      const newAnswers = answers;
+      for (let i = answers.length -1; i > 0; i--) {
+         const j = Math.floor(Math.random() * (i + 1))
+         [newAnswers[i], newAnswers[j] = [newAnswers[j], newAnswers[i]]];
+      }
+      console.log(newAnswers)
+   }
+
    useEffect(() => {
       getPokemonData();
    }, [])
