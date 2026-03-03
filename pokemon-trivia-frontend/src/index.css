@@ -1,3 +1,7 @@
+:root {
+  --borders: rgb(251, 209, 38);
+}
+
 /* Styling for Register page */
 body {
   margin: 0;
@@ -93,3 +97,17 @@ form + p {
   color: rgb(249, 30, 30);
 }
 
+/* GameBoard Component Styling */
+
+#game-board {
+  margin: 0;
+  padding: 30px;
+  min-width: 800px;
+  display: grid;
+  background-color: white;
+  border: 6px solid var(--borders);
+  border-radius: 17px;
+  justify-content: center;
+  text-align: center;
+  row-gap: 5px;
+}

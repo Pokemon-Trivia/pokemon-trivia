@@ -76,7 +76,7 @@ const QuestionBoard = () => {
    if (!currPokemon) return <p>Loading...</p>
 
    return (
-      <section>
+      <section id="game-board">
          <PokeImage imgUrl={currPokemon.imgUrl} name={currPokemon.name} />
          <Question name={currPokemon.name} />
          <AnswerList answerList={answers} />
