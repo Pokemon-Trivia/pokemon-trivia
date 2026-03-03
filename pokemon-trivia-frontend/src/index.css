@@ -137,10 +137,8 @@ form + p {
 
 #game-board li {
   padding: 50px 70px;
-  
   font-family: "Press Start 2P", system-ui;
   font-size: 1.5em;
-  
   width: 6em;
   justify-self: center;
   border: 6px solid black;
