@@ -101,8 +101,8 @@ form + p {
 
 #game-board {
   margin: 0;
-  padding: 30px;
-  max-width: 1000px;
+  padding: 50px;
+  max-width: 800px;
   display: grid;
   background-color: white;
   border: 6px solid var(--borders);
@@ -121,6 +121,7 @@ form + p {
   padding: 15px;
   font-size: 2em;
   font-family: "Press Start 2P", system-ui;
+  line-height: 2em;
   border: 6px solid;
   border-radius: 17px;
 }
@@ -130,5 +131,24 @@ form + p {
   margin: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 15px;
+  row-gap: 4em;
+  list-style: none;
+}
+
+#game-board li {
+  padding: 50px 70px;
+  
+  font-family: "Press Start 2P", system-ui;
+  font-size: 1.5em;
+  
+  width: 6em;
+  justify-self: center;
+  border: 6px solid black;
+  border-radius: 17px;
+}
+
+#game-board li:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.5em;
+  cursor: pointer;
 }
