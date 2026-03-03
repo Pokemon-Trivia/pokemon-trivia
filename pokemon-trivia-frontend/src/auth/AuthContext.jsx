@@ -51,7 +51,7 @@ export default function AuthProvider({ children }) {
     localStorage.removeItem("token");
   };
 
-  const value = { token, register, logout };
+  const value = { token, register, logout, login };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
