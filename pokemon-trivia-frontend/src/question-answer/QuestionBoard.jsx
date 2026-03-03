@@ -5,7 +5,6 @@ import AnswerList from "./AnswerList";
 import { getPokemon, getTypes } from "../api/questions";
 
 
-
 const QuestionBoard = () => {
    const [currPokemon, setCurrPokemon] = useState(null);
    const [previousPokemon, setPreviousPokemon] = useState([]);
