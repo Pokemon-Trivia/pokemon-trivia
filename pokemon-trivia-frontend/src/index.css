@@ -102,14 +102,14 @@ form + p {
 #game-board {
   margin: 0;
   padding: 30px;
-  min-width: 800px;
+  max-width: 1000px;
   display: grid;
   background-color: white;
   border: 6px solid var(--borders);
   border-radius: 17px;
   justify-content: center;
   text-align: center;
-  row-gap: 5px;
+  row-gap: 15px;
 }
 
 #game-board img {
@@ -123,4 +123,12 @@ form + p {
   font-family: "Press Start 2P", system-ui;
   border: 6px solid;
   border-radius: 17px;
+}
+
+#game-board ul {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 15px;
 }
