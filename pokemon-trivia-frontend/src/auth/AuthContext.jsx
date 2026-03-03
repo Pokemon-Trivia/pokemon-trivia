@@ -29,6 +29,23 @@ export default function AuthProvider({ children }) {
     return result;
   };
 
+  const login = async (credentials) => {
+    const response = await fetch("/users/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(credentials),
+    });
+
+    const result = await response.json();
+    if (!response.ok) {
+      throw Error(result.message);
+    }
+
+    setToken(result.token);
+    localStorage.setItem("token", result.token);
+    return result;
+  };
+
   const logout = () => {
     setToken(null);
     localStorage.removeItem("token");
