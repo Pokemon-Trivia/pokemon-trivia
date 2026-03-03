@@ -1,5 +1,10 @@
+:root {
+  --borders: rgb(251, 209, 38);
+}
+
 /* Styling for Register page */
-.authPage {
+body {
+  margin: 0;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -90,4 +95,58 @@ form + p {
 
 #error-msg {
   color: rgb(249, 30, 30);
+}
+
+/* GameBoard Component Styling */
+
+#game-board {
+  margin: 0;
+  padding: 50px;
+  max-width: 800px;
+  display: grid;
+  background-color: white;
+  border: 6px solid var(--borders);
+  border-radius: 17px;
+  justify-content: center;
+  text-align: center;
+  row-gap: 15px;
+}
+
+#game-board img {
+  height: 20em;
+  justify-self: center;
+}
+
+#game-board p {
+  padding: 15px;
+  font-size: 2em;
+  font-family: "Press Start 2P", system-ui;
+  line-height: 2em;
+  border: 6px solid;
+  border-radius: 17px;
+}
+
+#game-board ul {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 4em;
+  list-style: none;
+}
+
+#game-board li {
+  padding: 50px 70px;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 1.5em;
+  width: 8em;
+  justify-self: center;
+  border: 6px solid black;
+  border-radius: 17px;
+}
+
+#game-board li:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.5em;
+  cursor: pointer;
 }

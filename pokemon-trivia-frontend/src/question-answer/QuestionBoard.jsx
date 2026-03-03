@@ -5,7 +5,6 @@ import AnswerList from "./AnswerList";
 import { getPokemon, getTypes } from "../api/questions";
 
 
-
 const QuestionBoard = () => {
    const [currPokemon, setCurrPokemon] = useState(null);
    const [previousPokemon, setPreviousPokemon] = useState([]);
@@ -77,7 +76,7 @@ const QuestionBoard = () => {
    if (!currPokemon) return <p>Loading...</p>
 
    return (
-      <section>
+      <section id="game-board">
          <PokeImage imgUrl={currPokemon.imgUrl} name={currPokemon.name} />
          <Question name={currPokemon.name} />
          <AnswerList answerList={answers} />
