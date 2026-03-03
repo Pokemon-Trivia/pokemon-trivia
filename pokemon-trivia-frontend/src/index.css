@@ -111,3 +111,8 @@ form + p {
   text-align: center;
   row-gap: 5px;
 }
+
+#game-board img {
+  height: 15em;
+  justify-self: center;
+}
