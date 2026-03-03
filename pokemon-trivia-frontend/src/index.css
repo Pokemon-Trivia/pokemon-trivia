@@ -113,6 +113,14 @@ form + p {
 }
 
 #game-board img {
-  height: 15em;
+  height: 20em;
   justify-self: center;
+}
+
+#game-board p {
+  padding: 15px;
+  font-size: 2em;
+  font-family: "Press Start 2P", system-ui;
+  border: 6px solid;
+  border-radius: 17px;
 }
