@@ -10,7 +10,7 @@ export default function Login() {
 
   const tryLogin = async (e) => {
     e.preventDefault();
-    setError(null);
+
     const formData = new FormData(e.target);
     const username = formData.get("username");
     const password = formData.get("password");
@@ -56,8 +56,7 @@ export default function Login() {
           <p id="error-msg">{error}</p>
         ) : (
           <p>
-            Need an account?
-            <Link to="/register">Register here.</Link>
+            Need an account? <Link to="/register"> Register here</Link>
           </p>
         )}
       </div>

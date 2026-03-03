@@ -14,7 +14,9 @@ router.post("/register", async (req, res, next) => {
     const { username, password } = req.body;
 
     if (!username || !password) {
-      return res.status(400).send("Username and password are missing.");
+      return res
+        .status(400)
+        .json({ message: "Username and password are missing." });
     }
 
     const token = await createUser({ username, password });
@@ -30,18 +32,20 @@ router.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
     if (!username || !password) {
-      return res.status(400).send("Username and password are missing.");
+      return res
+        .status(400)
+        .json({ message: "Username and password are missing." });
     }
 
     const foundUser = await findUserByUsername(username);
     if (!foundUser) {
-      return res.status(401).send("Invalid credentials.");
+      return res.status(401).json({ message: "Username does not exists" });
     }
 
     const isPasswordMatch = await bcrypt.compare(password, foundUser.password);
 
     if (!isPasswordMatch) {
-      return res.status(401).send("Invalid credentials.");
+      return res.status(401).json({ message: "Invalid password" });
     }
 
     const token = jwt.sign(
