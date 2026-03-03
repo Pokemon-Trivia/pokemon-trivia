@@ -1,11 +1,27 @@
 import { useState } from "react";
 import { useAuth } from "./AuthContext";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import pokeball from "../assets/pokeball.png";
 
 export default function Login() {
-  const { register } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  const tryLogin = async (e) => {
+    e.preventDefault();
+    setError(null);
+    const formData = new FormData(e.target);
+    const username = formData.get("username");
+    const password = formData.get("password");
+
+    try {
+      await login({ username, password });
+      navigate("/home");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
   return (
     <div className="loginPage">
@@ -13,7 +29,7 @@ export default function Login() {
         <img src={pokeball} alt="pokeball logo" id="pokeLogo" />
         <h1 id="login-header">POKÉMON TRIVIA</h1>
         <p>Become a Pokémon Master!</p>
-        <form onSubmit>
+        <form onSubmit={tryLogin}>
           <label>
             Username
             <input
