@@ -1,24 +1,15 @@
 const QuestionScore = ({questionCount, currScore}) => {
    return (
-      <section>
+      <section id="question-score">
          <QuestionCount questionCount={questionCount} />
          <Score currScore={currScore} />
       </section>
    )
 }
 
-const QuestionCount = ({questionCount}) => {
-   return (
-      <p>
-         Question {questionCount} out of 10
-      </p>
-   )
-}
+const QuestionCount = ({questionCount}) => <p>Question {questionCount} out of 10</p>
 
-const Score = ({currScore}) => {
-   <p>
-      Score: {currScore}
-   </p>
-}
+const Score = ({currScore}) => <p>Score: {currScore}</p>
+
 
 export default QuestionScore;
