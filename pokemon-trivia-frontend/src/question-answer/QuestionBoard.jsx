@@ -72,6 +72,7 @@ const QuestionBoard = () => {
    }
 
    const resetGame = () => {
+      setCurrPokemon(null)
       setPreviousPokemon([])
       setAnswers([])
       setCurrScore(0)
