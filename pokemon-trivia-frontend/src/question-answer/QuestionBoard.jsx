@@ -64,10 +64,10 @@ const QuestionBoard = () => {
 
    const checkAnswer = (selectedType) => {
       if (selectedType === currPokemon.type) {
-         setCurrScore(currScore++);
+         setCurrScore(currScore + 1);
       }
-      setPreviousPokemon(...previousPokemon, currPokemon.id)
-      seQuestionCount(questionCount++);
+      setPreviousPokemon([...previousPokemon, currPokemon.id])
+      seQuestionCount(questionCount + 1);
    }
 
    useEffect(() => {
@@ -89,7 +89,7 @@ const QuestionBoard = () => {
          <QuestionScore questionCount={questionCount} currScore={currScore} />
          <PokeImage imgUrl={currPokemon.imgUrl} name={currPokemon.name} />
          <Question name={currPokemon.name} />
-         <AnswerList answerList={answers} />
+         <AnswerList answerList={answers} checkAnswer={checkAnswer} />
       </section>
    )
 }
