@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "./AuthContext";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import pokeball from "../assets/pokeball.png";
 
 export default function Register() {
@@ -69,7 +69,10 @@ export default function Register() {
         {error ? (
           <p id="error-msg">{error}</p>
         ) : (
-          <p>Already have an account? Log in</p>
+          <p>
+            Already have an account?
+            <Link to="/login"> Log in</Link>
+          </p>
         )}
       </div>
     </div>
