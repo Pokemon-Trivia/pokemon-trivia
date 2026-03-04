@@ -4,6 +4,7 @@ import Question from "./Question";
 import AnswerList from "./AnswerList";
 import { getPokemon, getTypes } from "../api/questions";
 import QuestionScore from "./QuestionScore";
+import GameResults from "./GameResults";
 
 
 const QuestionBoard = () => {
@@ -62,6 +63,22 @@ const QuestionBoard = () => {
       setAnswers(randomAnswerList)
    }
 
+   const checkAnswer = (selectedType) => {
+      if (selectedType === currPokemon.type) {
+         setCurrScore(currScore + 1);
+      }
+      setPreviousPokemon([...previousPokemon, currPokemon.id])
+      seQuestionCount(questionCount + 1);
+   }
+
+   const resetGame = () => {
+      setCurrPokemon(null)
+      setPreviousPokemon([])
+      setAnswers([])
+      setCurrScore(0)
+      seQuestionCount(1)
+   }
+
    useEffect(() => {
       getPokemonData();
    }, [questionCount])
@@ -76,14 +93,20 @@ const QuestionBoard = () => {
 
    if (!currPokemon) return <p>Loading...</p>
 
-   return (
-      <section id="game-board">
-         <QuestionScore questionCount={questionCount} currScore={currScore} />
-         <PokeImage imgUrl={currPokemon.imgUrl} name={currPokemon.name} />
-         <Question name={currPokemon.name} />
-         <AnswerList answerList={answers} />
-      </section>
-   )
+   return questionCount < 11 ? 
+      (
+         <section id="game-board">
+            <QuestionScore questionCount={questionCount} currScore={currScore} />
+            <PokeImage imgUrl={currPokemon.imgUrl} name={currPokemon.name} />
+            <Question name={currPokemon.name} />
+            <AnswerList answerList={answers} checkAnswer={checkAnswer} />
+         </section>
+      )
+      : (
+         <section id="game-board">
+            <GameResults currScore={currScore} resetGame={resetGame} />
+         </section>
+      )
 }
 
 export default QuestionBoard;
