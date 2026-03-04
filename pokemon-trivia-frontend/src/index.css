@@ -112,7 +112,7 @@ a {
   padding: 50px;
   max-width: 800px;
   display: grid;
-  background-color: white;
+  background-color: #F0F0F0;
   border: 6px solid var(--borders);
   border-radius: 17px;
   justify-content: center;
@@ -186,7 +186,7 @@ a {
   display: grid;
   grid-template-columns: 4fr 1fr;
   column-gap: 2em;
-  font-size: 1em;
+  font-size: 1.1em;
   border: solid black;
   border-radius: 17px;
   box-shadow: 3px 3px 0 black;
