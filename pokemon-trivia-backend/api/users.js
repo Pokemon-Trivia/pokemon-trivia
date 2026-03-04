@@ -19,7 +19,11 @@ router.post("/register", async (req, res, next) => {
         .json({ message: "Username and password are missing." });
     }
 
-    const token = await createUser({ username, password });
+    const user = await createUser({ username, password });
+    const token = jwt.sign(
+      { id: user.id, username: user.username },
+      process.env.JWT_SECRET,
+    );
 
     res.status(201).send({ token });
   } catch (error) {
