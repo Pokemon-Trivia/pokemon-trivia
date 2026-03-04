@@ -3,6 +3,7 @@ import PokeImage from "./PokeImage";
 import Question from "./Question";
 import AnswerList from "./AnswerList";
 import { getPokemon, getTypes } from "../api/questions";
+import QuestionScore from "./QuestionScore";
 
 
 const QuestionBoard = () => {
@@ -41,7 +42,7 @@ const QuestionBoard = () => {
       setTypes(await getTypes());
    }
 
-   const answerShuffle = (answerArray, rightAnswer) => {
+   const answerShuffle = (answerArray) => {
       for (let i = answerArray.length -1; i > 0; i--) {
          const j = Math.floor(Math.random() * (i + 1));
          [answerArray[i], answerArray[j]] = [answerArray[j], answerArray[i]];
@@ -77,6 +78,7 @@ const QuestionBoard = () => {
 
    return (
       <section id="game-board">
+         <QuestionScore questionCount={questionCount} currScore={currScore} />
          <PokeImage imgUrl={currPokemon.imgUrl} name={currPokemon.name} />
          <Question name={currPokemon.name} />
          <AnswerList answerList={answers} />

@@ -1,7 +1,7 @@
 const Question = ({name}) => {
    return (
       <p>
-         What primary type of Pokémon is {name}?
+         What is {name}'s primary Pokémon type?
       </p>
    )
 }
