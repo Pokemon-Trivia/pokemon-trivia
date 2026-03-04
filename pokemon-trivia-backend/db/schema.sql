@@ -5,7 +5,7 @@ CREATE TABLE users (
    id SERIAL PRIMARY KEY,
    username VARCHAR(30) UNIQUE NOT NULL,
    password VARCHAR(100) NOT NULL,
-   high_score INTEGER
+   high_score INTEGER DEFAULT 0
 );
 
 CREATE TABLE friends (
