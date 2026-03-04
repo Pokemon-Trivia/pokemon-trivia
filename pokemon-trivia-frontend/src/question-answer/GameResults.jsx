@@ -1,8 +1,11 @@
-const GameResults = ({currScore}) => {
+import PlayOrHome from "./PlayOrHome"
+
+const GameResults = ({currScore, resetGame}) => {
    return (
       <section className="game-board">
          <QuizComplete />
          <GameScore currScore={currScore} />
+         <PlayOrHome resetGame={resetGame} />
       </section>
    )
 }
