@@ -4,6 +4,7 @@ import Question from "./Question";
 import AnswerList from "./AnswerList";
 import { getPokemon, getTypes } from "../api/questions";
 import QuestionScore from "./QuestionScore";
+import GameResults from "./GameResults";
 
 
 const QuestionBoard = () => {
@@ -70,6 +71,13 @@ const QuestionBoard = () => {
       seQuestionCount(questionCount + 1);
    }
 
+   const resetGame = () => {
+      setPreviousPokemon([])
+      setAnswers([])
+      setCurrScore(0)
+      seQuestionCount(1)
+   }
+
    useEffect(() => {
       getPokemonData();
    }, [questionCount])
@@ -84,14 +92,20 @@ const QuestionBoard = () => {
 
    if (!currPokemon) return <p>Loading...</p>
 
-   return (
-      <section id="game-board">
-         <QuestionScore questionCount={questionCount} currScore={currScore} />
-         <PokeImage imgUrl={currPokemon.imgUrl} name={currPokemon.name} />
-         <Question name={currPokemon.name} />
-         <AnswerList answerList={answers} checkAnswer={checkAnswer} />
-      </section>
-   )
+   questionCount < 11 ? 
+      (
+         <section id="game-board">
+            <QuestionScore questionCount={questionCount} currScore={currScore} />
+            <PokeImage imgUrl={currPokemon.imgUrl} name={currPokemon.name} />
+            <Question name={currPokemon.name} />
+            <AnswerList answerList={answers} checkAnswer={checkAnswer} />
+         </section>
+      )
+      : (
+         <section id="game-board">
+            <GameResults currScore={currScore} resetGame={resetGame} />
+         </section>
+      )
 }
 
 export default QuestionBoard;
