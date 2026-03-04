@@ -1,11 +1,18 @@
-const GameResults = () => {
+const GameResults = ({currScore}) => {
    return (
-      <GameComplete />
+      <section className="game-board">
+         <QuizComplete />
+         <GameScore currScore={currScore} />
+      </section>
    )
 }
 
-const GameComplete = () => {
-   <h2>Game Complete</h2>
+const QuizComplete = () => {
+   <h2>Quiz Complete</h2>
+}
+
+const GameScore = ({currScore}) => {
+   <p>{currScore} / 10</p>
 }
 
 export default GameResults;
