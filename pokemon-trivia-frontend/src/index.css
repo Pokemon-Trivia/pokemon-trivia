@@ -158,3 +158,166 @@ a {
   text-decoration-thickness: 0.5em;
   cursor: pointer;
 }
+
+/* Home Page styling */
+
+.welcomeSection {
+  margin-top: 4rem;
+  text-align: center;
+  color: black;
+  background-color: white;
+  width: min(750px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 1.5rem;
+  border-radius: 15px;
+  border: 6px solid rgb(251, 209, 38);
+}
+
+.welcomeSection h2 {
+  font-size: 2rem;
+  margin-bottom: 0;
+  color: rgb(43, 40, 40);
+}
+
+.welcomeSection p {
+  font-size: 1.1rem;
+  color: rgb(30, 29, 29);
+  margin-top: 0;
+}
+
+.homeCard {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.buttonCard {
+  border-radius: 15px;
+  padding: 20px;
+  width: min(200px, 100%);
+}
+
+.buttonCard:has(#startGameBtn) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, #5ef35e 0%, #2cd62c 100%);
+  border-radius: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.15),
+    inset 0 3px 8px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.buttonCard:has(#startGameBtn):hover {
+  cursor: pointer;
+  box-shadow:
+    0 15px 35px rgba(44, 214, 44, 0.35),
+    inset 0 3px 8px rgba(255, 255, 255, 0.45);
+}
+
+.buttonCard:has(#friendBtn) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, #ffb347 0%, #f7931e 100%);
+  border-radius: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.15),
+    inset 0 3px 8px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.buttonCard:has(#friendBtn):hover {
+  cursor: pointer;
+  box-shadow:
+    0 15px 35px rgba(247, 147, 30, 0.35),
+    inset 0 3px 8px rgba(255, 255, 255, 0.45);
+}
+
+.buttonCard:has(#leaderboardBtn) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, #5bb5ff 0%, #3a7de0 100%);
+  border-radius: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.15),
+    inset 0 3px 8px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.buttonCard:has(#leaderboardBtn):hover {
+  cursor: pointer;
+  box-shadow:
+    0 15px 35px rgba(58, 125, 224, 0.35),
+    inset 0 3px 8px rgba(255, 255, 255, 0.45);
+}
+
+#playIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  font-size: 25px;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+#playIcon svg {
+  fill: #2cd62c;
+}
+
+#trophyIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  font-size: 25px;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+#trophyIcon svg {
+  fill: #5bb5ff;
+}
+
+#friendsIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  font-size: 25px;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+#friendsIcon svg {
+  fill: #ffb347;
+}
+
+.buttonCard button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1.75rem;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
+
+.buttonCard p {
+  color: white;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
