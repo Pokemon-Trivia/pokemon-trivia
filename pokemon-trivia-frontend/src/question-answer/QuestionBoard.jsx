@@ -62,6 +62,14 @@ const QuestionBoard = () => {
       setAnswers(randomAnswerList)
    }
 
+   const checkAnswer = (selectedType) => {
+      if (selectedType === currPokemon.type) {
+         setCurrScore(currScore++);
+      }
+      setPreviousPokemon(...previousPokemon, currPokemon.id)
+      seQuestionCount(questionCount++);
+   }
+
    useEffect(() => {
       getPokemonData();
    }, [questionCount])
