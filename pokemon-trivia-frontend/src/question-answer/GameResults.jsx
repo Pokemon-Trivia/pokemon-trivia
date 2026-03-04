@@ -10,12 +10,8 @@ const GameResults = ({currScore, resetGame}) => {
    )
 }
 
-const QuizComplete = () => {
-   <p>Quiz Complete</p>
-}
+const QuizComplete = () => <p>Quiz Complete</p>
 
-const GameScore = ({currScore}) => {
-   <p>{currScore} / 10</p>
-}
+const GameScore = ({currScore}) => <p>You got {currScore} / 10 Correct!</p>
 
 export default GameResults;

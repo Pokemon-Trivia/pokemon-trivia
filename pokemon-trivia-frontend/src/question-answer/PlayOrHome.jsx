@@ -5,7 +5,7 @@ const PlayOrHome = ({resetGame}) => {
    return (
       <section id="play-or-home">
          <button id="play-again" onClick={() => resetGame()}>Play Again</button>
-         <button id="return-home" onClick={navigate('/home')}>Home</button>
+         <button id="return-home" onClick={() => navigate('/home')}>Home</button>
       </section>
    )
 }

@@ -92,7 +92,7 @@ const QuestionBoard = () => {
 
    if (!currPokemon) return <p>Loading...</p>
 
-   questionCount < 11 ? 
+   return questionCount < 11 ? 
       (
          <section id="game-board">
             <QuestionScore questionCount={questionCount} currScore={currScore} />
