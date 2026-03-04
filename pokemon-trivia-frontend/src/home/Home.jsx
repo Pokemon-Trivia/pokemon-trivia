@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router";
 import { useAuth } from "../auth/AuthContext";
 import { useEffect } from "react";
-import pokeball from "../assets/pokeball.png";
 
 export default function Home() {
   const { token } = useAuth();
@@ -14,10 +13,24 @@ export default function Home() {
 
   return (
     <div className="homePage">
-      <div className="homeHeader">
-        <img src={pokeball} alt="pokeball logo" id="pokeLogo" />
-        <h1>Welcome to Pokémon Trivia</h1>
-      </div>
+      <main className="welcomeSection">
+        <h2>Welcome, Trainer!</h2>
+        <p>Ready to test your Pokémon knowledge?</p>
+        <div className="homeCard">
+          <div className="buttonCard">
+            <button id="startGameBtn">Start Game</button>
+            <p>Begin a new trivia challenge</p>
+          </div>
+          <div className="buttonCard">
+            <button id="leaderboardBtn">Leaderboard</button>
+            <p>View top trainers</p>
+          </div>
+          <div className="buttonCard">
+            <button id="friendBtn">Friends</button>
+            <p>Manage your friend list</p>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
