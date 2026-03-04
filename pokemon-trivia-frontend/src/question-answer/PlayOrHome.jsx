@@ -4,8 +4,8 @@ const PlayOrHome = ({resetGame}) => {
    const navigate = useNavigate()
    return (
       <section id="play-or-home">
-         <p onClick={() => resetGame()}>Play Again</p>
-         <p onClick={navigate('/home')}>Home</p>
+         <button id="play-again" onClick={() => resetGame()}>Play Again</button>
+         <button id="return-home" onClick={navigate('/home')}>Home</button>
       </section>
    )
 }
