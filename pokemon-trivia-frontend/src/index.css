@@ -122,6 +122,7 @@ a {
 
 #game-board img {
   height: 9em;
+  max-width: 15em;
   justify-self: center;
   align-self: center;
 }
@@ -155,16 +156,20 @@ a {
   list-style: none;
 }
 
+#game-board li,
+#play-again {
+  background-color: #ffd700;
+  border: solid black;
+  border-radius: 17px;
+  box-shadow: 3px 3px 0 black;
+}
+
 #game-board li {
   padding: 30px 50px;
   font-family: "Press Start 2P", system-ui;
   font-size: 0.8em;
-  background-color: #ffd700;
   width: 8em;
   justify-self: center;
-  border: solid black;
-  border-radius: 17px;
-  box-shadow: 3px 3px 0 black;
 }
 
 #game-board li:hover {
@@ -180,21 +185,85 @@ a {
   box-shadow: 2px 2px 0 black;
 }
 
-#question-score {
+#return-home,
+#question-score,
+#quiz-complete {
   background-color: #cc0000;
   color: #ffd700;
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-  column-gap: 2em;
-  font-size: 1.1em;
+  text-shadow: 2px 2px 0 black;
   border: solid black;
   border-radius: 17px;
   box-shadow: 3px 3px 0 black;
 }
 
+#question-score,
+#quiz-complete {
+  font-size: 1.05em;
+}
+
+#question-score {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  column-gap: 2em;
+}
+
 #question-score p {
   border: none;
   box-shadow: none;
+}
+
+#play-or-home {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1em;
+}
+
+#game-score span {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+#play-again,
+#return-home {
+  padding: 3em;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.75em;
+  border-radius: 15px;
+}
+
+#play-again:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 black;
+  cursor: pointer;
+}
+
+#play-again:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 black;
+}
+
+
+
+#return-home:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 black;
+  cursor: pointer;
+}
+
+#return-home:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 black;
+}
+
+.quiz-btn {
+  display: grid;
+  row-gap: 0.5em;
+}
+
+.quiz-icon {
+  justify-self: center;
+  font-size: 1.3em;
 }
 
 /* Home Page styling */
