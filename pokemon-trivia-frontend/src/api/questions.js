@@ -6,10 +6,13 @@ export const getPokemon = async(id) => {
       const pokemon = await response.json();
       const name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
       const type = pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)
+      const imgUrl = pokemon.id <= 905  
+         ? pokemon.sprites.other.showdown.front_default 
+         : pokemon.sprites.other[`official-artwork`].front_default
       const pokeData = {
          id,
          name,
-         imgUrl: pokemon.sprites.other[`official-artwork`].front_default,
+         imgUrl,
          type
       }
       return pokeData;
