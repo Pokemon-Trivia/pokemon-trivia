@@ -170,7 +170,6 @@ a {
   font-size: 0.8em;
   width: 8em;
   justify-self: center;
-  
 }
 
 #game-board li:hover {
@@ -186,15 +185,20 @@ a {
   box-shadow: 2px 2px 0 black;
 }
 
+#return-home,
 #question-score,
 #quiz-complete {
   background-color: #cc0000;
   color: #ffd700;
-  font-size: 1.05em;
   text-shadow: 2px 2px 0 black;
   border: solid black;
   border-radius: 17px;
   box-shadow: 3px 3px 0 black;
+}
+
+#question-score,
+#quiz-complete {
+  font-size: 1.05em;
 }
 
 #question-score {
@@ -214,6 +218,11 @@ a {
   column-gap: 1em;
 }
 
+#game-score span {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
 #play-again,
 #return-home {
   padding: 3em;
@@ -230,6 +239,17 @@ a {
 }
 
 #play-again:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 black;
+}
+
+#return-home:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 black;
+  cursor: pointer;
+}
+
+#return-home:active {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0 black;
 }
