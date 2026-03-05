@@ -203,6 +203,11 @@ a {
   box-shadow: none;
 }
 
+#play-or-home {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 /* Home Page styling */
 .welcomeSection {
   margin-top: 4rem;
