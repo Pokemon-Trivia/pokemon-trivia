@@ -206,6 +206,16 @@ a {
 #play-or-home {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  column-gap: 1em;
+}
+
+#play-again,
+#return-home {
+  padding: 3em;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.75em;
+  border-radius: 15px;
 }
 
 /* Home Page styling */
