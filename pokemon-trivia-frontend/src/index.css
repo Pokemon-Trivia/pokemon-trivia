@@ -122,6 +122,7 @@ a {
 
 #game-board img {
   height: 9em;
+  max-width: 15em;
   justify-self: center;
   align-self: center;
 }
@@ -180,16 +181,21 @@ a {
   box-shadow: 2px 2px 0 black;
 }
 
-#question-score {
+#question-score,
+#quiz-complete {
   background-color: #cc0000;
   color: #ffd700;
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-  column-gap: 2em;
-  font-size: 1.1em;
+  font-size: 1.05em;
+  text-shadow: 2px 2px 0 black;
   border: solid black;
   border-radius: 17px;
   box-shadow: 3px 3px 0 black;
+}
+
+#question-score {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  column-gap: 2em;
 }
 
 #question-score p {
