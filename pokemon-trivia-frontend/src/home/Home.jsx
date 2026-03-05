@@ -6,11 +6,12 @@ import { FaPlay, FaTrophy, FaUserFriends } from "react-icons/fa";
 export default function Home() {
   const { token } = useAuth();
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate("/login");
-  //   }
-  // }, [token, navigate]);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token, navigate]);
 
   return (
     <div className="homePage">
