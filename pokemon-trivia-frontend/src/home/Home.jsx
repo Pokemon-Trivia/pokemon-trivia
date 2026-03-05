@@ -18,34 +18,34 @@ export default function Home() {
         <h2>Welcome, Trainer!</h2>
         <p>Ready to test your Pokémon knowledge?</p>
         <div className="homeCard">
-          <div className="buttonCard">
+          <div
+            className="buttonCard startCardBtn"
+            onClick={() => navigate("/question")}
+          >
             <div id="playIcon">
               <FaPlay />
             </div>
-            <button id="startGameBtn" onClick={() => navigate("/question")}>
-              Start Game
-            </button>
+            <h3 id="startGameBtn">Start Game</h3>
             <p>Begin a new trivia challenge</p>
           </div>
-          <div className="buttonCard">
+          <div
+            className="buttonCard leaderboardCardBtn"
+            onClick={() => navigate("/leaderboard")}
+          >
             <div id="trophyIcon">
               <FaTrophy />
             </div>
-            <button
-              id="leaderboardBtn"
-              onClick={() => navigate("/leaderboard")}
-            >
-              Leaderboard
-            </button>
+            <h3 id="leaderboardBtn">Leaderboard</h3>
             <p>View top trainers</p>
           </div>
-          <div className="buttonCard">
+          <div
+            className="buttonCard friendsCardBtn"
+            onClick={() => navigate("/friends")}
+          >
             <div id="friendsIcon">
               <FaUserFriends />
             </div>
-            <button id="friendBtn" onClick={() => navigate("/friends")}>
-              Friends
-            </button>
+            <h3 id="friendBtn">Friends</h3>
             <p>Manage your friend list</p>
           </div>
         </div>
