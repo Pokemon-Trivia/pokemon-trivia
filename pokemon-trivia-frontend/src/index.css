@@ -156,16 +156,21 @@ a {
   list-style: none;
 }
 
+#game-board li,
+#play-again {
+  background-color: #ffd700;
+  border: solid black;
+  border-radius: 17px;
+  box-shadow: 3px 3px 0 black;
+}
+
 #game-board li {
   padding: 30px 50px;
   font-family: "Press Start 2P", system-ui;
   font-size: 0.8em;
-  background-color: #ffd700;
   width: 8em;
   justify-self: center;
-  border: solid black;
-  border-radius: 17px;
-  box-shadow: 3px 3px 0 black;
+  
 }
 
 #game-board li:hover {
@@ -216,6 +221,17 @@ a {
   font-weight: bold;
   font-size: 1.75em;
   border-radius: 15px;
+}
+
+#play-again:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 black;
+  cursor: pointer;
+}
+
+#play-again:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 black;
 }
 
 /* Home Page styling */
