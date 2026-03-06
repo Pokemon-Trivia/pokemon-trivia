@@ -5,8 +5,6 @@ import AnswerList from "./AnswerList";
 import { getPokemon, getTypes } from "../api/questions";
 import QuestionScore from "./QuestionScore";
 import GameResults from "./GameResults";
-import { sendScore } from "../api/score";
-import { useAuth } from '../auth/AuthContext'; 
 
 
 const QuestionBoard = () => {
@@ -16,7 +14,6 @@ const QuestionBoard = () => {
    const [types, setTypes] = useState([]);
    const [currScore, setCurrScore] = useState(0);
    const [questionCount, seQuestionCount] = useState(1);
-   const { token } = useAuth(); 
 
    const getPokemonData = async() => {
       const pokeId = randomId();
@@ -74,10 +71,6 @@ const QuestionBoard = () => {
       seQuestionCount(questionCount + 1);
    }
 
-   const trySendHighScore = async (scoreInfo) => {
-      await sendScore(scoreInfo);
-   }
-
    const resetGame = () => {
       setCurrPokemon(null)
       setPreviousPokemon([])
@@ -99,14 +92,6 @@ const QuestionBoard = () => {
    }, [currPokemon, types])
 
    if (!currPokemon) return <p>Loading...</p>
-
-   if (questionCount > 10) {
-      try {
-         trySendHighScore({token, newScore: currScore})
-      } catch (error) {
-         console.log(error)
-      }
-   }
 
    return questionCount < 11 ? 
       (
