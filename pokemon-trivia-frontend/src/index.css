@@ -6,14 +6,29 @@
 body {
   margin: 0;
   min-height: 100vh;
-  display: flex;
+  /* Commented as a part of fix will remove if testing will pass */
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   font-family: Arial, sans-serif;
   background-image: url("./assets/background.png");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
+}
+
+.pageContent {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.registerPage,
+.loginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4rem;
 }
 
 .registerCard,
@@ -108,7 +123,7 @@ a {
 /* GameBoard Component Styling */
 
 #game-board {
-  margin: 0;
+  margin: 0 auto;
   padding: 50px;
   max-width: 800px;
   display: grid;
@@ -242,8 +257,6 @@ a {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0 black;
 }
-
-
 
 #return-home:hover {
   transform: translate(-2px, -2px);
@@ -382,8 +395,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin-bottom: 0.75rem; */
 }
+
 #playIcon svg {
   fill: #2cd62c;
 }
@@ -433,4 +446,60 @@ a {
   color: white;
   font-size: 0.85rem;
   margin-bottom: 0.25rem;
+}
+
+/* Header Styling */
+.navbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto 0 auto;
+  padding: 0.75rem 2rem;
+  background-color: rgb(252, 247, 232);
+  border-radius: 15px;
+  border: rgb(33, 88, 214) 3px solid;
+}
+
+.navbar-header {
+  justify-self: start;
+}
+
+.navbar-title {
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+  justify-self: center;
+  display: flex;
+}
+
+#headerLogo {
+  width: 60px;
+  height: auto;
+}
+
+#logoutBtn {
+  background-color: rgb(223, 10, 10);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  font-weight: bolder;
+  border: rgb(187, 34, 34) 1px solid;
+  display: inline-block;
+  box-shadow:
+    0 6px 12px rgba(97, 9, 9, 0.25),
+    inset 0 3px 6px rgba(255, 255, 255, 0.4);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#logoutBtn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 18px rgba(97, 9, 9, 0.35),
+    inset 0 3px 6px rgba(255, 255, 255, 0.4);
 }
