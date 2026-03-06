@@ -12,5 +12,5 @@ export const sendScore = async(scoreInfo) => {
    if (!response.ok) {
       throw new Error(result.message)
    }
-   console.log("Success connecting to server", result)
+   return result;
 }

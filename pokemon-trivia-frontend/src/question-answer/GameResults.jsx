@@ -8,7 +8,8 @@ const GameResults = ({currScore, resetGame}) => {
    const { token } = useAuth();
 
    const trySendHighScore = async (scoreInfo) => {
-      await sendScore(scoreInfo);
+      const isHighScore = await sendScore(scoreInfo);
+      setIsNewHighScore(isHighScore);
    }
 
    useEffect(() => {
@@ -22,8 +23,8 @@ const GameResults = ({currScore, resetGame}) => {
    return (
       <>
          <QuizComplete />
-         <GameScore currScore={currScore} />
-         <PlayOrHome resetGame={resetGame} isNewHighScore={isNewHighScore} />
+         <GameScore currScore={currScore} isNewHighScore={isNewHighScore} />
+         <PlayOrHome resetGame={resetGame} />
       </>
    )
 }
