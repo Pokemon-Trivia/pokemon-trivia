@@ -3,7 +3,7 @@ export const sendScore = async(scoreInfo) => {
       method: "PUT",
       headers: {
          "Content-Type": "application/json",
-         Authorization: "Bearer" + scoreInfo.token
+         Authorization: "Bearer " + scoreInfo.token
       },
       body: JSON.stringify(scoreInfo)
    });
