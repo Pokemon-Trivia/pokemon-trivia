@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 export default router;
 
-import { createUser, findUserByUsername } from "../db/queries/users.js";
+import { createUser, findUserByUsername, getUserHighScoreById } from "../db/queries/users.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -67,12 +67,12 @@ router.post("/login", async (req, res, next) => {
 router.put("/highscore", async(req, res, next) => {
   try {
     const {token, newScore} = req.body
-    console.log('token ', token);
-    console.log('newScore ',newScore);
-    const userInfo = jwt.verify(token, process.env.JWT_SECRET);
-    const username = userInfo.username;
-    console.log("username ", username);
-
+    const tokenInfo = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = tokenInfo.id;
+    console.log("username ", userId);
+    const userInfo = await getUserHighScoreById(userId);
+    const currentHighScore = userInfo.highScore;
+    console.log('current high score ', currentHighScore)
     res.json("OK")
   } catch (error) {
     next(error)

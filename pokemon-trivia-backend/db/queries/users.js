@@ -56,3 +56,13 @@ export const findUserByUsername = async (username) => {
 
   return user;
 };
+
+export const getUserHighScoreById = async (id) => {
+  const sql = `
+    SELECT users.high_score AS "highScore" FROM users
+    WHERE users.id = $1
+  `;
+
+  const {rows: [score]} = await db.query(sql, [id])
+  return score
+}
