@@ -66,7 +66,9 @@ router.post("/login", async (req, res, next) => {
 
 router.put("/highscore", async(req, res, next) => {
   try {
-    const {token, newScore} = req.body
+    const {newScore} = req.body
+    const headers = req.headers
+    const token = headers.authorization.split(' ')[1];
     const tokenInfo = jwt.verify(token, process.env.JWT_SECRET);
     const userId = tokenInfo.id;
     const userNewScore = {id: userId, newScore}
