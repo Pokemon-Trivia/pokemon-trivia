@@ -29,7 +29,7 @@ export default function Register() {
     }
   };
   return (
-    <div className="authPage">
+    <div className="registerPage">
       <div className="registerCard">
         <img src={pokeball} alt="pokeball logo" id="pokeLogo" />
         <h1 id="register-header">POKÉMON TRIVIA</h1>

@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <div className="homePage">
-      <main className="welcomeSection">
+      <section className="welcomeSection">
         <h2>Welcome, Trainer!</h2>
         <p>Ready to test your Pokémon knowledge?</p>
         <div className="homeCard">
@@ -50,7 +50,7 @@ export default function Home() {
             <p>Manage your friend list</p>
           </div>
         </div>
-      </main>
+      </section>
     </div>
   );
 }
