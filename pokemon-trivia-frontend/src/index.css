@@ -295,12 +295,6 @@ a {
   font-family: Arial, sans-serif;
 }
 
-/* .homeCard {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-} */
-
 .homeCard {
   display: flex;
   justify-content: center;
@@ -310,16 +304,10 @@ a {
   align-items: stretch;
 }
 
-/* .buttonCard {
-  border-radius: 15px;
-  padding: 20px;
-  width: min(200px, 100%);
-} */
-
 .buttonCard {
   border-radius: 15px;
   padding: 20px;
-  flex: 0 0 200px; /* important */
+  flex: 0 0 200px;
   max-width: 200px;
   cursor: pointer;
 }
@@ -409,7 +397,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin-bottom: 0.75rem; */
 }
 
 #trophyIcon svg {
@@ -425,7 +412,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin-bottom: 0.75rem; */
 }
 
 #friendsIcon svg {
