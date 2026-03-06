@@ -2,6 +2,7 @@ import { sendScore } from "../api/score";
 import PlayOrHome from "./PlayOrHome"
 import { useAuth } from '../auth/AuthContext'; 
 import { useEffect, useState } from "react";
+import Ash from "../assets/Ash.png"
 
 const GameResults = ({currScore, resetGame}) => {
    const [isNewHighScore, setIsNewHighScore] = useState(false);
@@ -36,7 +37,10 @@ const GameScore = ({currScore, isNewHighScore}) => {
       <>
          <p id="game-score">You got <span>{currScore}</span> / 10 Correct!</p>
          {isNewHighScore 
-            ? <p id="new-high-score">Congratulations! New High Score: {currScore}</p>
+            ? <>
+               <p id="new-high-score">Congratulations! New High Score: {currScore}</p>
+               <img src={Ash} alt="Ash Ketchum holding a pokeball out to the front of him" />
+            </>
             : <article></article>}
       </>
    )
