@@ -1,7 +1,7 @@
 import { sendScore } from "../api/score";
 import PlayOrHome from "./PlayOrHome"
 import { useAuth } from '../auth/AuthContext'; 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const GameResults = ({currScore, resetGame}) => {
    const [isNewHighScore, setIsNewHighScore] = useState(false);
@@ -11,11 +11,13 @@ const GameResults = ({currScore, resetGame}) => {
       await sendScore(scoreInfo);
    }
 
-   try {
-      trySendHighScore({token, newScore: currScore})
-   } catch (error) {
-      console.log(error)
-   }
+   useEffect(() => {
+      try {
+         trySendHighScore({token, newScore: currScore})
+      } catch (error) {
+         console.log(error)
+      }
+   }, [])
 
    return (
       <>
