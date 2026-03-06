@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from "react-router";
-import pokeLogo from "../assets/pokeball.png";
+import pokeLogo from "../assets/pokeball_header.gif";
+import pokemenTrivia from "../assets/pokemon_trivia.png";
 import { useAuth } from "../auth/AuthContext";
 import { FaHome } from "react-icons/fa";
 
@@ -10,27 +11,26 @@ export default function Navbar() {
   const isHomePage = location.pathname === "/home";
 
   return (
-    <section className="navbar">
-      <header>
-        <NavLink to="/home" className="navbar-header">
-          <img id="logo" src={pokeLogo} alt="Pokemon logo" />
-          <p>Pokemon Trivia</p>
-        </NavLink>
-      </header>
+    <header className="navbar">
+      <NavLink to="/home" className="navbar-header">
+        <img id="headerLogo" src={pokeLogo} alt="Pokemon logo" />
+      </NavLink>
+      <NavLink to="/home">
+        <img
+          className="navbar-title"
+          src={pokemenTrivia}
+          alt="Pokemon Trivia header"
+        />
+      </NavLink>
       <nav>
         {token && (
           <>
-            {!isHomePage && (
-              <NavLink to="/home" className="homeIcon">
-                <FaHome />
-              </NavLink>
-            )}
-            <NavLink to="/login" onClick={logout}>
+            <NavLink to="/login" id="logoutBtn" onClick={logout}>
               Logout
             </NavLink>
           </>
         )}
       </nav>
-    </section>
+    </header>
   );
 }
