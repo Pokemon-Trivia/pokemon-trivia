@@ -63,3 +63,18 @@ router.post("/login", async (req, res, next) => {
     next(error);
   }
 });
+
+router.put("/highscore", async(req, res, next) => {
+  try {
+    const {token, newScore} = req.body
+    console.log('token ', token);
+    console.log('newScore ',newScore);
+    const userInfo = jwt.verify(token, process.env.JWT_SECRET);
+    const username = userInfo.username;
+    console.log("username ", username);
+
+    res.json("OK")
+  } catch (error) {
+    next(error)
+  }
+})
