@@ -4,13 +4,15 @@ import FriendsHeader from "./FriendsHeader";
 import FriendsList from "./FriendsList";
 import { useAuth } from "../auth/AuthContext";
 import { getFriends } from "../api/friends";
+import "./friends.css"
 
 const Friends = () => {
    const [friends, setFriends] = useState([]);
    const { token } = useAuth();
    
    const tryGetFriends = async () => {
-      await getFriends(token)
+      const friendArray = await getFriends(token);
+      setFriends(friendArray)
    }
 
    useEffect(() => {
@@ -21,7 +23,7 @@ const Friends = () => {
     <section id="friends">
       <FriendsHeader />
       <FriendSearch />
-      {/* <FriendsList friends={friends} /> */}
+      <FriendsList friends={friends} />
     </section>
   );
 };

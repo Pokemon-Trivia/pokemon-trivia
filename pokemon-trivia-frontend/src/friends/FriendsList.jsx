@@ -1,18 +1,12 @@
-const FriendsList = (friends) => {
+const FriendsList = ({friends}) => {
    return friends ? (
-      <ul>
-         {friends.map((friend) => {
-            <FriendsListItem key={friend.id} friend={friend} />
-         })}
+      <ul id="friend-list">
+         {friends.map((friend) => <FriendsListItem key={friend} friend={friend} />)}
       </ul>
    )
    : <h1>Loading...</h1>
 }
 
-const FriendsListItem = ({friend}) => {
-   return (
-      <li>{friend}</li>
-   )
-}
+const FriendsListItem = ({friend}) => <li>{friend}</li>
 
 export default FriendsList;

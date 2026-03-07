@@ -11,6 +11,5 @@ export const getFriends = async (token) => {
    if (!response.ok) {
          throw new Error(result.message)
    }
-   console.log(result)
    return result;
 }

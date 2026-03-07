@@ -24,6 +24,6 @@ export const getUserFriendsById = async (id) => {
       WHERE user_id = $1 OR friend_user_id = $1
    `;
 
-   const { rows: array } = await db.query(sql, [id])
-   console.log(array)
+   const { rows: array } = await db.query(sql, [id]);
+   return array
 }
