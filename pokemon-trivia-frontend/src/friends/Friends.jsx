@@ -1,5 +1,13 @@
+import FriendSearch from "./FriendSearch";
+import FriendsHeader from "./FriendsHeader";
+
 const Friends = () => {
-   return <h1>Loading...</h1>
+   return (
+      <section>
+         <FriendsHeader />
+         <FriendSearch />
+      </section>
+   )
 }
 
 export default Friends;
