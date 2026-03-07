@@ -1,5 +1,5 @@
 export const sendScore = async(scoreInfo) => {
-   const response = await fetch("/users/highscore", {
+   const response = await fetch("/api/users/highscore", {
       method: "PUT",
       headers: {
          "Content-Type": "application/json",

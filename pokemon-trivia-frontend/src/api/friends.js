@@ -1,5 +1,5 @@
-export const getFriends = async () => {
-   const response = await fetch("/friends", {
+export const getFriends = async (token) => {
+   const response = await fetch("/api/friends", {
       method: "GET",
       headers: {
          "Content-Type": "application/json",

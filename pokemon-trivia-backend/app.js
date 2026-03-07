@@ -3,10 +3,12 @@ const app = express();
 export default app;
 
 import userRouter from "./api/users.js";
+import friendsRouter from "./api/friends.js";
 
 app.use(express.json());
 
-app.use("/users", userRouter);
+app.use("/api/users", userRouter);
+app.use("/api/friends", friendsRouter)
 
 app.use((err, req, res, next) => {
   console.error(err);
