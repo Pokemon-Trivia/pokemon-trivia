@@ -1,10 +1,10 @@
 const FriendsList = ({friends}) => {
-   return friends ? (
+   return friends.length > 0 ? (
       <ul id="friend-list">
          {friends.map((friend) => <FriendsListItem key={friend} friend={friend} />)}
       </ul>
    )
-   : <h1>Loading...</h1>
+   : <h4 id="friends-list">Search to add friends!</h4>
 }
 
 const FriendsListItem = ({friend}) => <li>{friend}</li>
