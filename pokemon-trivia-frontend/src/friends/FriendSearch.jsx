@@ -1,5 +1,10 @@
 const FriendSearch = () => {
-   return <h4>Loading...</h4>
+   return (
+      <form id="search" action="">
+         <input type="text" name="criteria" id="username" placeholder="Search for a friend" required/>
+         <button id="search-btn">Search</button>
+      </form>
+   )
 }
 
 export default FriendSearch
