@@ -6,6 +6,7 @@ import Layout from "./layout/Layout.jsx";
 
 import { Routes, Route } from "react-router";
 import QuestionBoard from "./question-answer/QuestionBoard.jsx";
+import Friends from "./friends/Friends.jsx";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/home" element={<Home />} />
         <Route path="/leaderboard" element={<h1>Leaderboard</h1>} />
-        <Route path="/friends" element={<h1>Friends</h1>} />
+        <Route path="/friends" element={<Friends  />} />
       </Route>
     </Routes>
   );
