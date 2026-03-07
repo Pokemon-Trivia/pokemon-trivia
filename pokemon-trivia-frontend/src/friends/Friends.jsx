@@ -8,15 +8,7 @@ const Friends = () => {
    const [friends, setFriends] = useState([]);
    const { token } = useAuth();
 
-   const getFriends = async () => {
-      const response = await fetch("/friends", {
-         method: "GET",
-         headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token
-         }
-      })
-   }
+   
    
    const tryGetFriends = async () => {
       
