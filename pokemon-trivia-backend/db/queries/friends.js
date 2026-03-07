@@ -12,3 +12,18 @@ export const addFriend = async(userId, friendUserId) => {
    const friendUsername = await findUsernameById(friend.id);
    return friendUsername;
 }
+
+export const getUserFriendsById = async (id) => {
+   const sql = `
+      SELECT
+      CASE
+      WHEN user_id = $1 THEN friend_user_id
+      WHEN friend_user_id = $1 THEN user_id
+      END AS "friendId"
+      FROM friends
+      WHERE user_id = $1 OR friend_user_id = $1
+   `;
+
+   const { rows: array } = await db.query(sql, [id])
+   console.log(array)
+}
