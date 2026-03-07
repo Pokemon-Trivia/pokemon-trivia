@@ -2,7 +2,7 @@ const FriendsList = (friends) => {
    return friends ? (
       <ul>
          {friends.map((friend) => {
-            <FriendsListItem friend={friend} />
+            <FriendsListItem key={friend.id} friend={friend} />
          })}
       </ul>
    )
