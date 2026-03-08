@@ -1,3 +1,4 @@
+import { addNewFriend } from "../api/friends";
 import { useAuth } from "../auth/AuthContext"
 
 const FoundFriends = ({ friends, foundFriends, resetFoundFriends }) => {
@@ -7,6 +8,8 @@ const FoundFriends = ({ friends, foundFriends, resetFoundFriends }) => {
          token,
          friendUsername
       };
+
+      const addedFriend = await addNewFriend(friendInfo);
       resetFoundFriends()
    }
 

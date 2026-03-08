@@ -31,7 +31,7 @@ export const getUserFriendsById = async (id) => {
 export const getAllUsernames = async (id) => {
    const sql = `
       SELECT users.username FROM users
-      WHERE users.username <> $1
+      WHERE users.id <> $1
    `;
 
    const { rows: usernames } = await db.query(sql, [id])
