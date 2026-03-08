@@ -23,6 +23,12 @@ const Friends = () => {
       setFoundFriends(found)
    }
 
+   const resetFoundFriends = () => setFoundFriends(null)
+
+   useEffect(() => {
+      resetFoundFriends();
+   }, [])
+
    useEffect(() => {
       if (!token) return
       tryGetFriends()
@@ -31,7 +37,7 @@ const Friends = () => {
   return (
     <section id="friends">
       <FriendsHeader friends={friends} />
-      <FriendSearch findFriends={findFriends} />
+      <FriendSearch findFriends={findFriends} />  
       <h2>My Friends:</h2>
       <FriendsList friends={friends} />
     </section>
