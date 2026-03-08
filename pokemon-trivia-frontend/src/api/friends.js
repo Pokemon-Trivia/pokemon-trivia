@@ -43,6 +43,5 @@ export const addNewFriend = async (friendInfo) => {
    if (!response.ok) {
       throw new Error(result.message)
    }
-   console.log(result)
    return result;
 }

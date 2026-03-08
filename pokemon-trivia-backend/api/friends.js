@@ -51,9 +51,7 @@ friendsRouter.post("/add", async (req, res, next) => {
     const user = req.user;
     const friendId = await findUserIdByUsername(friendUsername);
     const addedUsername = await addFriend(user.id, friendId);
-    console.log("original username for friend ", friendUsername);
-    console.log("added username for friend ", addedUsername);
-    return addedUsername;
+    res.status(201).json(addedUsername)
   } catch (error) {
     next(error);
   }

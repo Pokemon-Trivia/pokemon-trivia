@@ -9,7 +9,7 @@ const FoundFriends = ({ friends, foundFriends, resetFoundFriends }) => {
          friendUsername
       };
 
-      const addedFriend = await addNewFriend(friendInfo);
+      await addNewFriend(friendInfo);
       resetFoundFriends()
    }
 

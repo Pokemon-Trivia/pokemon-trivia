@@ -33,7 +33,7 @@ const Friends = () => {
    useEffect(() => {
       if (!token) return
       tryGetFriends()
-   }, [token])
+   }, [token, foundFriends])
 
   return !foundFriends ? (
     <section id="friends">
