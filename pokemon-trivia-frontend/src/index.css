@@ -173,6 +173,7 @@ a {
   margin: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  column-gap: 4em;
   row-gap: 3em;
   list-style: none;
 }
@@ -552,5 +553,20 @@ a {
 
   #headerLogo {
     justify-self: center
+  }
+}
+
+@media screen and (max-height: 900px) {
+  .quiz-btn {
+    padding: 1.5em;
+  }
+
+  #poke-image {
+    height: 15em;
+    width: 20em;
+  }
+
+  #poke-image img {
+    height: 8em;
   }
 }
