@@ -23,7 +23,13 @@ const FoundFriends = ({ friends, foundFriends, resetFoundFriends }) => {
          <p id="back-btn" className="btn" onClick={() => resetFoundFriends()}>Back</p>
       </section>
    )
-   : <h2>No Trainers Found</h2>
+      : (
+         <>
+            <h2>No Trainers Found</h2>
+            <p id="back-btn" className="btn" onClick={() => resetFoundFriends()}>Back</p>
+         </> 
+
+      )
 }
 
 const FoundFriendsLi = ({ friends, friend, addFriend }) => {

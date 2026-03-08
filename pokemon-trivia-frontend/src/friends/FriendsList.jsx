@@ -7,6 +7,6 @@ const FriendsList = ({friends}) => {
    : <h4 id="friends-list">Search to add friends!</h4>
 }
 
-const FriendsListItem = ({friend}) => <li>{friend}</li> 
+const FriendsListItem = ({friend}) => <li className="friends-items">{friend}</li> 
 
 export default FriendsList;

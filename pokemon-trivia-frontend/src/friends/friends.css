@@ -85,6 +85,10 @@ button:active {
    grid-template-columns: 6fr 1fr;
 }
 
+.friends-items {
+   grid-template-columns: none;
+}
+
 #found-friends {
    display: grid;
 }
