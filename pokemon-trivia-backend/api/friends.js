@@ -1,4 +1,4 @@
-import { getUserFriendsById } from '#pokemon-trivia-backend/db/queries/friends';
+import { getAllUsernames, getUserFriendsById } from '#pokemon-trivia-backend/db/queries/friends';
 import { findUsernameById } from '#pokemon-trivia-backend/db/queries/users';
 import express from 'express';
 import jwt from 'jsonwebtoken';
@@ -15,6 +15,16 @@ friendsRouter.get('/', async(req, res, next) => {
       res.send(friendUsernames)
    } catch (error) {
       console.log(error)
+      next(error)
+   }
+})
+
+friendsRouter.get('/search', async (req, res, next) => {
+   try {
+      const usernameObjects = await getAllUsernames()
+      console.log(usernameObjects)
+      res.json("Working on it")
+   } catch (error) {
       next(error)
    }
 })
