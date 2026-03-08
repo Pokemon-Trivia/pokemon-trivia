@@ -15,13 +15,13 @@ export const addFriend = async(userId, friendUserId) => {
 
 export const getUserFriendsById = async (id) => {
    const sql = `
-      SELECT
-      CASE
-      WHEN user_id = $1 THEN friend_user_id
-      WHEN friend_user_id = $1 THEN user_id
-      END AS "friendId"
-      FROM friends
-      WHERE user_id = $1 OR friend_user_id = $1
+      SELECT u.username
+      FROM friends f
+      JOIN users u ON u.id = CASE
+      WHEN f.user_id = $1 THEN f.friend_user_id
+      WHEN f.friend_user_id = $1 THEN f.user_id
+      END
+      WHERE f.user_id = $1 OR f.friend_user_id = $1
    `;
 
    const { rows: array } = await db.query(sql, [id]);

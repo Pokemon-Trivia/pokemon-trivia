@@ -11,12 +11,10 @@ friendsRouter.get('/', async(req, res, next) => {
       const token = req.headers.authorization.split(' ')[1];
       const user = jwt.verify(token, process.env.JWT_SECRET)
       const friendArray = await getUserFriendsById(user.id)
-      const friendUsernameArray = await Promise.all(friendArray.map(async (friend) => {
-         const friendUsername = await findUsernameById(friend.friendId)
-         return friendUsername;
-      }));
-      res.send(friendUsernameArray)
+      const friendUsernames = friendArray.map((friend) => friend.username)
+      res.send(friendUsernames)
    } catch (error) {
       console.log(error)
+      next(error)
    }
 })

@@ -16,13 +16,15 @@ const Friends = () => {
    }
 
    useEffect(() => {
+      if (!token) return
       tryGetFriends()
-   }, [])
+   }, [token])
 
   return (
     <section id="friends">
       <FriendsHeader friends={friends} />
       <FriendSearch />
+      <h2>My Friends:</h2>
       <FriendsList friends={friends} />
     </section>
   );
