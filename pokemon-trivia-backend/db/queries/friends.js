@@ -28,11 +28,12 @@ export const getUserFriendsById = async (id) => {
    return array
 }
 
-export const getAllUsernames = async () => {
+export const getAllUsernames = async (id) => {
    const sql = `
       SELECT users.username FROM users
+      WHERE users.username <> $1
    `;
 
-   const { rows: usernames } = await db.query(sql)
+   const { rows: usernames } = await db.query(sql, [id])
    return usernames;
 }

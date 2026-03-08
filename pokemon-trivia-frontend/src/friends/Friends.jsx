@@ -19,7 +19,7 @@ const Friends = () => {
 
    const findFriends = async(formData) => {
       const criteria = formData.get('criteria').trim().toLowerCase();
-      const allUsernames = await getUsernames()
+      const allUsernames = await getUsernames(token)
       const found = allUsernames.filter((username) => username.toLowerCase().includes(criteria))
       setFoundFriends(found)
    }

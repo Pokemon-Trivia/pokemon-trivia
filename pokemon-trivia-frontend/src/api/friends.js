@@ -14,8 +14,14 @@ export const getFriends = async (token) => {
    return result;
 }
 
-export const getUsernames = async () => {
-   const response = await fetch("/api/friends/search")
+export const getUsernames = async (token) => {
+   const response = await fetch("/api/friends/search", {
+      method: "GET",
+      headers: {
+         "Conetent-Type": "application/json",
+         Authorization: "Bearer " + token
+      }
+   })
    const result = await response.json()
    if (!response.ok) {
       throw new Error(result.message)
@@ -32,4 +38,11 @@ export const addNewFriend = async (friendInfo) => {
       },
       body:JSON.stringify(friendInfo)
    })
+
+   const result = await response.json()
+   if (!response.ok) {
+      throw new Error(result.message)
+   }
+   console.log(result)
+   return result;
 }
