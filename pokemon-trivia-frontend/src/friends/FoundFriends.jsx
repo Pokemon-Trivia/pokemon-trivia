@@ -25,7 +25,7 @@ const FoundFriends = ({ friends, foundFriends, resetFoundFriends }) => {
    )
       : (
          <>
-            <h2>No Trainers Found</h2>
+            <h2 id="no-trainers">No Trainers Found</h2>
             <p id="back-btn" className="btn" onClick={() => resetFoundFriends()}>Back</p>
          </> 
 
