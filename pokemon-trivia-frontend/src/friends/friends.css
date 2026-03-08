@@ -16,11 +16,33 @@ li {
    font-family: "Press Start 2P", system-ui;
    border: 6px solid;
    border-radius: 15px;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   column-gap: 1em;
+   align-items: center;
 }
 
+p {
+   margin: 0;
+   font-family: Arial, sans-serif;
+   text-align: center;
+}
+
+.btn,
 button {
    border-radius: 15px;
    box-shadow: 3px 3px 0 black;
+}
+
+.btn:hover {
+   transform: translate(-2px, -2px);
+   box-shadow: 5px 5px 0 black;
+   cursor: pointer;
+}
+
+.btn:active {
+   transform: translate(2px, 2px);
+   box-shadow: 2px 2px 0 black;
 }
 
 button:hover {
@@ -67,6 +89,13 @@ button:active {
    display: grid;
 }
 
+#add-friend-btn {
+   padding: 0.75em;
+   font-size: 1em;
+   font-weight: bold;
+   background-color: #ffd700;
+}
+
 #back-btn {
    font-size: 1.1em;
    font-weight: bold;
@@ -75,4 +104,5 @@ button:active {
    justify-self: center;
    background-color: #cc0000;
    color: white;
+   text-shadow: 2px 2px 0 black;
 }
