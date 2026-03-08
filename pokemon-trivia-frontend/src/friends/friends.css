@@ -1,5 +1,29 @@
 #friends {
+   padding: 50px;
+   max-width: 800px;
+   max-height: 40em;
+   background-color: #f0f0f0;
+   border: 6px solid var(--borders);
+   border-radius: 17px;
    display: grid;
+   grid-template-rows: 1fr 1fr 8fr;
+   row-gap: 2em;
+}
+
+#friend-header {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   align-items: center;
+}
+
+#friend-header p {
+   justify-self: end;
+}
+
+#search {
+   width: 35em;
+   display: grid;
+   grid-template-columns: 6fr 1fr;
 }
 
 #friends-list {
