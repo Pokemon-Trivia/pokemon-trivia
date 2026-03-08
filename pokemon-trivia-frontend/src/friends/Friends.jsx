@@ -5,6 +5,7 @@ import FriendsList from "./FriendsList";
 import { useAuth } from "../auth/AuthContext";
 import { getFriends, getUsernames } from "../api/friends";
 import "./friends.css"
+import FoundFriends from "./FoundFriends";
 
 const Friends = () => {
    const [friends, setFriends] = useState([]);
@@ -34,14 +35,22 @@ const Friends = () => {
       tryGetFriends()
    }, [token])
 
-  return (
+  return !foundFriends ? (
     <section id="friends">
       <FriendsHeader friends={friends} />
       <FriendSearch findFriends={findFriends} />  
       <h2>My Friends:</h2>
       <FriendsList friends={friends} />
     </section>
-  );
+  )
+     : (
+      <section id="friends">
+         <FriendsHeader friends={friends} />
+         <FriendSearch findFriends={findFriends} /> 
+         <h2>Search Results</h2>
+         <FoundFriends foundFriends={foundFriends} />  
+      </section>
+  )
 };
 
 export default Friends;
