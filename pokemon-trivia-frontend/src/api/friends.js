@@ -22,3 +22,14 @@ export const getUsernames = async () => {
    }
    return result;
 }
+
+export const addNewFriend = async (friendInfo) => {
+   const response = await fetch("/api/friends/add", {
+      method: "POST",
+      headers: {
+         "Content-Type": "application/json",
+         Authorization: "Bearer " + friendInfo.token
+      },
+      body:JSON.stringify(friendInfo)
+   })
+}
