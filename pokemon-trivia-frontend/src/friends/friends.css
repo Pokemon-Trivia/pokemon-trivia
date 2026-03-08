@@ -1,3 +1,32 @@
+ul {
+   padding: 0;
+   list-style: none;
+   justify-self: center;
+   display: grid;
+   row-gap: 2em;
+   height: fit-content;
+}
+
+li {
+   font-family: "Press Start 2P", system-ui;
+}
+
+button {
+   border-radius: 15px;
+   box-shadow: 3px 3px 0 black;
+}
+
+button:hover {
+   transform: translate(-2px, -2px);
+   box-shadow: 5px 5px 0 black;
+   cursor: pointer;
+}
+
+button:active {
+   transform: translate(2px, 2px);
+   box-shadow: 2px 2px 0 black;
+}
+
 #friends {
    padding: 50px;
    max-width: 800px;
@@ -24,8 +53,4 @@
    width: 35em;
    display: grid;
    grid-template-columns: 6fr 1fr;
-}
-
-#friends-list {
-   justify-self: center;
 }

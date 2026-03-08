@@ -21,7 +21,7 @@ const Friends = () => {
 
   return (
     <section id="friends">
-      <FriendsHeader />
+      <FriendsHeader friends={friends} />
       <FriendSearch />
       <FriendsList friends={friends} />
     </section>
