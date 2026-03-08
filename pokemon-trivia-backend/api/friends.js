@@ -22,8 +22,8 @@ friendsRouter.get('/', async(req, res, next) => {
 friendsRouter.get('/search', async (req, res, next) => {
    try {
       const usernameObjects = await getAllUsernames()
-      console.log(usernameObjects)
-      res.json("Working on it")
+      const usernames = usernameObjects.map((usernameObj) => usernameObj.username);
+      res.send(usernames)
    } catch (error) {
       next(error)
    }

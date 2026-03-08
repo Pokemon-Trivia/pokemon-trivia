@@ -30,7 +30,7 @@ export const getUserFriendsById = async (id) => {
 
 export const getAllUsernames = async () => {
    const sql = `
-      SELECT *.username FROM users
+      SELECT users.username FROM users
    `;
 
    const { rows: usernames } = await db.query(sql)

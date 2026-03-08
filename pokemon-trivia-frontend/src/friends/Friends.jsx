@@ -3,12 +3,12 @@ import FriendSearch from "./FriendSearch";
 import FriendsHeader from "./FriendsHeader";
 import FriendsList from "./FriendsList";
 import { useAuth } from "../auth/AuthContext";
-import { getFriends } from "../api/friends";
+import { getFriends, getUsernames } from "../api/friends";
 import "./friends.css"
 
 const Friends = () => {
    const [friends, setFriends] = useState([]);
-   const [foundFriends, setFoundFriends] = useState()
+   const [foundFriends, setFoundFriends] = useState();
    const { token } = useAuth();
    
    const tryGetFriends = async () => {
@@ -16,9 +16,11 @@ const Friends = () => {
       setFriends(friendArray)
    }
 
-   const findFriends = (formData) => {
+   const findFriends = async(formData) => {
       const criteria = formData.get('criteria').trim().toLowerCase();
-      const allUsernames = "Username Function"
+      const allUsernames = await getUsernames()
+      const found = allUsernames.filter((username) => username.toLowerCase().includes(criteria))
+      setFoundFriends(found)
    }
 
    useEffect(() => {
@@ -29,7 +31,7 @@ const Friends = () => {
   return (
     <section id="friends">
       <FriendsHeader friends={friends} />
-      <FriendSearch />
+      <FriendSearch findFriends={findFriends} />
       <h2>My Friends:</h2>
       <FriendsList friends={friends} />
     </section>

@@ -20,6 +20,5 @@ export const getUsernames = async () => {
    if (!response.ok) {
       throw new Error(result.message)
    }
-   console.log(result)
    return result;
 }
