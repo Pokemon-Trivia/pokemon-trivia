@@ -62,3 +62,17 @@ button:active {
    display: grid;
    grid-template-columns: 6fr 1fr;
 }
+
+#found-friends {
+   display: grid;
+}
+
+#back-btn {
+   font-size: 1.1em;
+   font-weight: bold;
+   padding: 1em;
+   width: fit-content;
+   justify-self: center;
+   background-color: #cc0000;
+   color: white;
+}
