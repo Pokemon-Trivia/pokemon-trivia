@@ -1,5 +1,6 @@
 :root {
   --borders: rgb(251, 209, 38);
+  /* display: flex; */
 }
 
 /* Styling for Login and Register page */
@@ -123,7 +124,7 @@ a {
 /* GameBoard Component Styling */
 
 #game-board {
-  margin: 0 auto;
+  margin: 2rem auto;
   padding: 50px;
   max-width: 800px;
   display: grid;
@@ -133,6 +134,8 @@ a {
   justify-content: center;
   text-align: center;
   row-gap: 15px;
+  justify-self: center;
+  align-self: center;
 }
 
 #game-board img {
@@ -218,13 +221,14 @@ a {
 
 #question-score {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
   column-gap: 2em;
 }
 
 #question-score p {
   border: none;
   box-shadow: none;
+  white-space: nowrap;
 }
 
 #play-or-home {
