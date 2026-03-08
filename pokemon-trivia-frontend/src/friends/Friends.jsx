@@ -8,11 +8,17 @@ import "./friends.css"
 
 const Friends = () => {
    const [friends, setFriends] = useState([]);
+   const [foundFriends, setFoundFriends] = useState()
    const { token } = useAuth();
    
    const tryGetFriends = async () => {
       const friendArray = await getFriends(token);
       setFriends(friendArray)
+   }
+
+   const findFriends = (formData) => {
+      const criteria = formData.get('criteria').trim().toLowerCase();
+      const allUsernames = "Username Function"
    }
 
    useEffect(() => {

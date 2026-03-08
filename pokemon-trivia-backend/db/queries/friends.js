@@ -27,3 +27,7 @@ export const getUserFriendsById = async (id) => {
    const { rows: array } = await db.query(sql, [id]);
    return array
 }
+
+export const getAllUsernames = async () => {
+   const 
+}

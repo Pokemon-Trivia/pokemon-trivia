@@ -13,3 +13,13 @@ export const getFriends = async (token) => {
    }
    return result;
 }
+
+export const getUsernames = async () => {
+   const response = await fetch("/api/friends/search")
+   const result = await response.json()
+   if (!response.ok) {
+      throw new Error(result.message)
+   }
+   console.log(result)
+   return result;
+}
