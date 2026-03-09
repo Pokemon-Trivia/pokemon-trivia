@@ -6,6 +6,11 @@
   display: grid;
 }
 
+#root-children {
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+}
+
 /* Styling for Login and Register page */
 body {
   margin: 0;
@@ -29,7 +34,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 4rem;
 }
 
 .registerCard,
@@ -169,6 +173,7 @@ a {
   margin: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  column-gap: 4em;
   row-gap: 3em;
   list-style: none;
 }
@@ -278,6 +283,10 @@ a {
 }
 
 /* Home Page styling */
+.homePage {
+  align-self: center;
+}
+
 .welcomeSection {
   text-align: center;
   color: black;
@@ -528,6 +537,7 @@ a {
   
   .navbar {
     grid-template-columns: none;
+    align-self: start;
     justify-content: center;
     width: 20em;
     row-gap: 2em;
@@ -543,5 +553,20 @@ a {
 
   #headerLogo {
     justify-self: center
+  }
+}
+
+@media screen and (max-height: 900px) {
+  .quiz-btn {
+    padding: 1.5em;
+  }
+
+  #poke-image {
+    height: 15em;
+    width: 20em;
+  }
+
+  #poke-image img {
+    height: 8em;
   }
 }
