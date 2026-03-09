@@ -1,24 +1,37 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import trainer1 from "../assets/avatars/avatar1.png";
+import trainer2 from "../assets/avatars/avatar2.png";
+import trainer3 from "../assets/avatars/avatar3.png";
+import trainer4 from "../assets/avatars/avatar4.png";
+import trainer5 from "../assets/avatars/avatar5.png";
+import trainer6 from "../assets/avatars/avatar6.png";
 
 export default function Account() {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [savedName, setSavedName] = useState(null);
+  const [selectedAvatar, setSelectedAvatar] = useState(null);
 
-  // Load saved name
+  const avatars = [trainer1, trainer2, trainer3, trainer4, trainer5, trainer6];
+
   useEffect(() => {
     const storedProfile = localStorage.getItem("trainerProfile");
 
     if (storedProfile) {
       const parsed = JSON.parse(storedProfile);
-      setSavedName(parsed.name);
+
+      setSavedName(parsed.name || null);
+      setSelectedAvatar(parsed.avatar || null);
     }
   }, []);
 
   const handleSave = () => {
-    const profile = { name };
+    const profile = {
+      name,
+      avatar: selectedAvatar,
+    };
 
     localStorage.setItem("trainerProfile", JSON.stringify(profile));
 
@@ -42,9 +55,7 @@ export default function Account() {
             />
           </>
         ) : (
-          <>
-            <h3>Name: {savedName}</h3>
-          </>
+          <h3>Name: {savedName}</h3>
         )}
       </section>
 
@@ -52,12 +63,17 @@ export default function Account() {
         <h3>Select Avatar</h3>
 
         <div className="avatarGrid">
-          <div className="avatar">Avatar 1</div>
-          <div className="avatar">Avatar 2</div>
-          <div className="avatar">Avatar 3</div>
-          <div className="avatar">Avatar 4</div>
-          <div className="avatar">Avatar 5</div>
-          <div className="avatar">Avatar 6</div>
+          {avatars.map((avatar, index) => (
+            <img
+              key={index}
+              src={avatar}
+              alt="trainer avatar"
+              className={
+                selectedAvatar === avatar ? "avatar selected" : "avatar"
+              }
+              onClick={() => setSelectedAvatar(avatar)}
+            />
+          ))}
         </div>
       </section>
 
