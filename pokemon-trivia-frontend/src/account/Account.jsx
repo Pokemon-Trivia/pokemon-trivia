@@ -40,58 +40,67 @@ export default function Account() {
 
   return (
     <div className="accountPage">
-      <h2>User Account</h2>
+      <div className="accountCard">
+        <h2>User Account</h2>
 
-      <section>
-        {!savedName ? (
-          <>
-            <label>Enter Your Name:</label>
-
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your name"
-            />
-          </>
-        ) : (
-          <h3>Name: {savedName}</h3>
-        )}
-      </section>
-
-      <section>
-        <h3>Select Avatar</h3>
-
-        <div className="avatarGrid">
-          {avatars.map((avatar, index) => (
-            <img
-              key={index}
-              src={avatar}
-              alt="trainer avatar"
-              className={
-                selectedAvatar === avatar ? "avatar selected" : "avatar"
-              }
-              onClick={() => setSelectedAvatar(avatar)}
-            />
-          ))}
-        </div>
-      </section>
-
-      {savedName && (
         <section>
-          <h3>Your Stats</h3>
+          {!savedName ? (
+            <>
+              <label>Enter Your Name:</label>
 
-          <p>Games Played: 0</p>
-          <p>High Score: 0</p>
-          <p>Accuracy: 0%</p>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your name"
+              />
+            </>
+          ) : (
+            <h3>Name: {savedName}</h3>
+          )}
         </section>
-      )}
 
-      <section>
-        {!savedName && <button onClick={handleSave}>Save</button>}
+        <section>
+          <h3>Select Avatar</h3>
 
-        <button onClick={() => navigate("/home")}>Cancel</button>
-      </section>
+          <div className="avatarGrid">
+            {avatars.map((avatar, index) => (
+              <img
+                key={index}
+                src={avatar}
+                alt="trainer avatar"
+                className={
+                  selectedAvatar === avatar ? "avatar selected" : "avatar"
+                }
+                onClick={() => setSelectedAvatar(avatar)}
+              />
+            ))}
+          </div>
+        </section>
+
+        {savedName && (
+          <section>
+            <h3>Your Stats</h3>
+
+            <p>Games Played: 0</p>
+            <p>High Score: 0</p>
+            <p>Accuracy: 0%</p>
+          </section>
+        )}
+
+        <section className="accountButtons">
+          <button
+            className="saveBtn"
+            onClick={handleSave}
+            disabled={!selectedAvatar && !name}
+          >
+            SAVE
+          </button>
+          <button className="cancelBtn" onClick={() => navigate("/home")}>
+            CANCEL
+          </button>
+        </section>
+      </div>
     </div>
   );
 }
