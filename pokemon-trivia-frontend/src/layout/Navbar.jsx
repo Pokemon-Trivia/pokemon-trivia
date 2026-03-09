@@ -2,7 +2,7 @@ import { NavLink, useLocation } from "react-router";
 import pokeLogo from "../assets/pokeball_header.gif";
 import pokemenTrivia from "../assets/pokemon_trivia.png";
 import { useAuth } from "../auth/AuthContext";
-import { FaHome } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 
 export default function Navbar() {
   const { token, logout } = useAuth();
