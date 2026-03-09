@@ -4,40 +4,25 @@ import { useNavigate } from "react-router";
 export default function Account() {
   const navigate = useNavigate();
 
-  const avatars = [
-    "trainer1.png",
-    "trainer2.png",
-    "trainer3.png",
-    "trainer4.png",
-    "trainer5.png",
-    "trainer6.png",
-  ];
+  const [name, setName] = useState("");
+  const [savedName, setSavedName] = useState(null);
 
-  const [username, setUsername] = useState("");
-  const [selectedAvatar, setSelectedAvatar] = useState(null);
-
+  // Load saved name
   useEffect(() => {
     const storedProfile = localStorage.getItem("trainerProfile");
 
     if (storedProfile) {
       const parsed = JSON.parse(storedProfile);
-      setUsername(parsed.username || "");
-      setSelectedAvatar(parsed.avatar || null);
+      setSavedName(parsed.name);
     }
   }, []);
 
   const handleSave = () => {
-    const profile = {
-      username,
-      avatar: selectedAvatar,
-    };
+    const profile = { name };
 
     localStorage.setItem("trainerProfile", JSON.stringify(profile));
-    navigate("/home");
-  };
 
-  const handleCancel = () => {
-    navigate("/home");
+    setSavedName(name);
   };
 
   return (
@@ -45,43 +30,51 @@ export default function Account() {
       <h2>User Account</h2>
 
       <section>
-        <label>Trainer Name</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Enter your name"
-        />
+        {!savedName ? (
+          <>
+            <label>Enter Your Name:</label>
+
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your name"
+            />
+          </>
+        ) : (
+          <>
+            <h3>Name: {savedName}</h3>
+          </>
+        )}
       </section>
 
       <section>
         <h3>Select Avatar</h3>
 
         <div className="avatarGrid">
-          {avatars.map((avatar) => (
-            <img
-              key={avatar}
-              src={`/avatars/${avatar}`}
-              alt="trainer avatar"
-              className={
-                selectedAvatar === avatar ? "avatar selected" : "avatar"
-              }
-              onClick={() => setSelectedAvatar(avatar)}
-            />
-          ))}
+          <div className="avatar">Avatar 1</div>
+          <div className="avatar">Avatar 2</div>
+          <div className="avatar">Avatar 3</div>
+          <div className="avatar">Avatar 4</div>
+          <div className="avatar">Avatar 5</div>
+          <div className="avatar">Avatar 6</div>
         </div>
       </section>
 
-      <section>
-        <h3>Your Stats</h3>
-        <p>Games Played: 0</p>
-        <p>High Score: 0</p>
-        <p>Accuracy: 0%</p>
-      </section>
+      {savedName && (
+        <section>
+          <h3>Your Stats</h3>
 
-      <section className="accountButtons">
-        <button onClick={handleSave}>Save</button>
-        <button onClick={handleCancel}>Cancel</button>
+          <p>Games Played: 0</p>
+          <p>High Score: 0</p>
+          <p>Accuracy: 0%</p>
+        </section>
+      )}
+
+      <section>
+        {!savedName && <button onClick={handleSave}>Save</button>}
+
+        <button onClick={() => navigate("/home")}>Cancel</button>
       </section>
     </div>
   );
