@@ -8,8 +8,6 @@ export default function Navbar() {
   const { token, logout } = useAuth();
   const location = useLocation();
 
-  const isHomePage = location.pathname === "/home";
-
   return (
     <header className="navbar">
       <NavLink to="/home" className="navbar-header">
@@ -25,6 +23,9 @@ export default function Navbar() {
       <nav>
         {token && (
           <>
+            <NavLink to="/account" className="navBtn">
+              <FaUser /> Account
+            </NavLink>
             <NavLink to="/login" id="logoutBtn" onClick={logout}>
               Logout
             </NavLink>
