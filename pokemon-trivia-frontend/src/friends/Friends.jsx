@@ -48,7 +48,7 @@ const Friends = () => {
          <FriendsHeader friends={friends} />
          <FriendSearch findFriends={findFriends} /> 
          <h2>Search Results</h2>
-         <FoundFriends friends={friends} foundFriends={foundFriends} resetFoundFriends={resetFoundFriends} />  
+         <FoundFriends friends={friends} foundFriends={foundFriends} resetFoundFriends={resetFoundFriends} tryGetFriends={tryGetFriends} />  
       </section>
   )
 };

@@ -1,7 +1,7 @@
 import { addNewFriend } from "../api/friends";
 import { useAuth } from "../auth/AuthContext"
 
-const FoundFriends = ({ friends, foundFriends, resetFoundFriends }) => {
+const FoundFriends = ({ friends, foundFriends, resetFoundFriends, tryGetFriends }) => {
    const { token } = useAuth();
    const addFriend = async (friendUsername) => {
       const friendInfo = {
@@ -10,7 +10,7 @@ const FoundFriends = ({ friends, foundFriends, resetFoundFriends }) => {
       };
 
       await addNewFriend(friendInfo);
-      resetFoundFriends()
+      await tryGetFriends();
    }
 
    return foundFriends.length > 0 ? (
