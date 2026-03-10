@@ -15,12 +15,12 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/question" element={<QuestionBoard />} />
+      <Route path="/account" element={<Account />} />
 
       <Route element={<Layout />}>
         <Route path="/home" element={<Home />} />
         <Route path="/leaderboard" element={<h1>Leaderboard</h1>} />
         <Route path="/friends" element={<Friends />} />
-        <Route path="/account" element={<Account />} />
       </Route>
     </Routes>
   );

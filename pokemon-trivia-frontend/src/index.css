@@ -556,12 +556,19 @@ a {
 }
 
 /* User Accout Styling */
-/* .avatarGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 10px;
-  justify-items: center;
+
+.accountHeader h2 {
+  background: linear-gradient(#ff3b3b, #cc0000);
+  color: #ffe44d;
+  padding: 10px 26px;
+  font-size: 22px;
+  font-weight: bold;
+  border: 4px solid #8b0000;
+  border-radius: 8px;
+  box-shadow:
+    0 4px 0 #8b0000,
+    inset 0 2px 0 rgba(255, 255, 255, 0.3);
+  margin-bottom: 2.5rem;
 }
 
 .avatar {
@@ -576,8 +583,7 @@ a {
 .avatar.selected {
   border: 3px solid #ffd43b;
   box-shadow: 0 0 10px rgba(255, 212, 59, 0.7);
-} */
-
+}
 .accountPage {
   display: flex;
   justify-content: center;
@@ -590,7 +596,7 @@ a {
   border: 6px solid #fbd126;
   border-radius: 18px;
   padding: 30px;
-  width: 500px;
+  width: 540px;
   text-align: center;
   box-shadow: 0 8px 0 #caa200;
 }
@@ -610,16 +616,98 @@ a {
   margin-bottom: 20px;
 }
 
+.accountCard label {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 8px;
+
+  text-shadow:
+    -1px -1px 0 #ffd43b,
+    1px -1px 0 #ffd43b,
+    -1px 1px 0 #ffd43b,
+    1px 1px 0 #ffd43b;
+}
+
+.accountCard input {
+  width: 80%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #f3c400;
+  background: white;
+  color: black;
+  outline: none;
+}
+
 .nameSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 25px;
 }
 
-.nameInput {
-  width: 80%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #5b7d5b;
+.nameSection label {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.nameSection input {
+  width: 420px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 3px solid #111;
   font-size: 16px;
+  text-align: center;
+  background-color: #f7f7f7;
+  transition: all 0.2s ease;
+}
+
+.currentNameRow h3 {
+  margin: 0;
+}
+
+.playerName {
+  color: black;
+
+  text-shadow:
+    -0.5px -0.5px 0 #0c9e41,
+    0.5px -0.5px 0 #22c55e,
+    -0.5px 0.5px 0 #22c55e,
+    0.5px 0.5px 0 #22c55e,
+    0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.currentNameRow {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin-left: 3rem;
+}
+
+.currentNameRow h3 {
+  margin: 0;
+}
+
+.changeNameBtn {
+  margin-left: 12px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  background: linear-gradient(#ffe44d, #f3c400);
+  border: 3px solid #000;
+  border-radius: 8px;
+  color: black;
+  cursor: pointer;
+  margin-left: 7rem;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .selectedAvatarBox {
@@ -632,10 +720,11 @@ a {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 6px solid #10c236;
+  border: 6px solid #1b8c13;
   background: white;
   padding: 6px;
   object-fit: contain;
+  background-color: #20d635;
 }
 
 .avatarGrid {
@@ -653,7 +742,8 @@ a {
 }
 
 .saveBtn,
-.cancelBtn {
+.cancelBtn,
+.backBtn {
   width: 140px;
   height: 52px;
   font-size: 18px;
@@ -672,11 +762,12 @@ a {
   width: 70px;
   height: 70px;
   border-radius: 10px;
-  border: 4px solid #ecdf31; /* yellow frame */
+  border: 4px solid #fff64a;
   background: white;
   padding: 4px;
   cursor: pointer;
   transition: transform 0.2s;
+  background-color: orange;
 }
 
 .avatar:hover {
@@ -690,7 +781,27 @@ a {
 
 .statsSection {
   margin-top: 25px;
+}
+
+.statsSection h3 {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.statsSection p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 220px;
+  margin: 8px auto;
   text-align: left;
+}
+
+.statIcon {
+  width: 24px;
+  display: inline-flex;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .accountButtons {
@@ -713,6 +824,17 @@ a {
 
 .cancelBtn {
   background: rgb(223, 10, 10);
+  border: 3px solid #f3c400;
+  color: #ffe44d;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+}
+
+.backBtn {
+  background: rgb(31, 101, 231);
   border: 3px solid #f3c400;
   color: #ffe44d;
   text-shadow:

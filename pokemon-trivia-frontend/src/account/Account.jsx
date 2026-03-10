@@ -6,6 +6,8 @@ import trainer3 from "../assets/avatars/avatar3.png";
 import trainer4 from "../assets/avatars/avatar4.png";
 import trainer5 from "../assets/avatars/avatar5.png";
 import trainer6 from "../assets/avatars/avatar6.png";
+import trainer7 from "../assets/avatars/avatar7.png";
+import trainer8 from "../assets/avatars/avatar8.png";
 
 export default function Account() {
   const navigate = useNavigate();
@@ -16,7 +18,16 @@ export default function Account() {
   const [savedAvatar, setSavedAvatar] = useState(null);
   const [isEditingName, setIsEditingName] = useState(false);
 
-  const avatars = [trainer1, trainer2, trainer3, trainer4, trainer5, trainer6];
+  const avatars = [
+    trainer1,
+    trainer2,
+    trainer3,
+    trainer4,
+    trainer5,
+    trainer6,
+    trainer7,
+    trainer8,
+  ];
 
   useEffect(() => {
     const storedProfile = localStorage.getItem("trainerProfile");
@@ -25,6 +36,7 @@ export default function Account() {
       const parsed = JSON.parse(storedProfile);
 
       setSavedName(parsed.name || null);
+      setName(parsed.name || "");
       setSelectedAvatar(parsed.avatar || null);
       setSavedAvatar(parsed.avatar || null);
     }
@@ -33,20 +45,34 @@ export default function Account() {
   const handleSave = () => {
     const profile = {
       name: name || savedName,
-      avatar: selectedAvatar,
+      avatar: selectedAvatar || savedAvatar,
     };
-
     localStorage.setItem("trainerProfile", JSON.stringify(profile));
-
     setSavedName(profile.name);
     setSavedAvatar(profile.avatar);
+    setSelectedAvatar(profile.avatar);
+    setIsEditingName(false);
+  };
+
+  const handleCancel = () => {
+    const storedProfile = localStorage.getItem("trainerProfile");
+    if (storedProfile) {
+      const parsed = JSON.parse(storedProfile);
+      setSavedName(parsed.name || null);
+      setName(parsed.name || "");
+      setSelectedAvatar(parsed.avatar || null);
+      setSavedAvatar(parsed.avatar || null);
+    }
+
     setIsEditingName(false);
   };
 
   return (
     <div className="accountPage">
       <div className="accountCard">
-        <h2>User Account</h2>
+        <div className="accountHeader">
+          <h2>User Account</h2>
+        </div>
 
         <section>
           {!savedName || isEditingName ? (
@@ -62,7 +88,9 @@ export default function Account() {
             </>
           ) : (
             <div className="currentNameRow">
-              <h3>Name: {savedName}</h3>
+              <h3>
+                Name: <span className="playerName">{savedName}</span>
+              </h3>
 
               <button
                 className="changeNameBtn"
@@ -82,7 +110,7 @@ export default function Account() {
 
             <div className="selectedAvatarBox">
               <img
-                src={savedAvatar}
+                src={selectedAvatar || savedAvatar}
                 alt="selected avatar"
                 className="selectedAvatarImage"
               />
@@ -91,7 +119,7 @@ export default function Account() {
         )}
 
         <section>
-          <h3>Select Avatar</h3>
+          <h3>All Avatars</h3>
 
           <div className="avatarGrid">
             {avatars.map((avatar, index) => (
@@ -109,12 +137,17 @@ export default function Account() {
         </section>
 
         {savedName && (
-          <section>
+          <section className="statsSection">
             <h3>Your Stats</h3>
-
-            <p>🎮 Games Played: 0</p>
-            <p>🏆 High Score: 0</p>
-            <p>🎯 Accuracy: 0%</p>
+            <p>
+              <span className="statIcon">🎮</span>Games Played: 0
+            </p>
+            <p>
+              <span className="statIcon">🏆</span>High Score: 0
+            </p>
+            <p>
+              <span className="statIcon">🎯</span>Accuracy: 0%
+            </p>
           </section>
         )}
 
@@ -122,12 +155,15 @@ export default function Account() {
           <button
             className="saveBtn"
             onClick={handleSave}
-            disabled={!selectedAvatar && !name}
+            disabled={!selectedAvatar && !savedAvatar && !name}
           >
             SAVE
           </button>
-          <button className="cancelBtn" onClick={() => navigate("/home")}>
+          <button className="cancelBtn" onClick={handleCancel}>
             CANCEL
+          </button>
+          <button className="backBtn" onClick={() => navigate("/home")}>
+            BACK
           </button>
         </section>
       </div>
