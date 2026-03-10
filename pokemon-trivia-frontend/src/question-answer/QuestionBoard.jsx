@@ -12,7 +12,7 @@ const QuestionBoard = () => {
   const [answers, setAnswers] = useState([]);
   const [types, setTypes] = useState([]);
   const [currScore, setCurrScore] = useState(0);
-  const [questionCount, seQuestionCount] = useState(1);
+  const [questionCount, setQuestionCount] = useState(1);
   const [timeLeft, setTimeLeft] = useState(10);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const QuestionBoard = () => {
       setTimeLeft((prev) => {
         if (prev === 1) {
           clearInterval(timer);
-          seQuestionCount((count) => count + 1);
+          setQuestionCount((count) => count + 1);
           return 0;
         }
         return prev - 1;
