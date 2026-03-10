@@ -2,7 +2,7 @@ const FriendsHeader = ({ friends }) => {
    return (
       <section id="friend-header">
          <h2>Friends</h2>
-         <p>Total Friends: {friends.length}</p>
+         <p id="friend-header-p">Total Friends: {friends.length}</p>
       </section>
    )
 }
