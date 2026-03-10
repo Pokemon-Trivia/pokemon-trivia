@@ -90,7 +90,7 @@ const QuestionBoard = () => {
       setCurrScore(currScore + 1);
     }
     setPreviousPokemon([...previousPokemon, currPokemon.id]);
-    seQuestionCount(questionCount + 1);
+    setQuestionCount((count) => count + 1);
   };
 
   const resetGame = () => {
@@ -98,7 +98,7 @@ const QuestionBoard = () => {
     setPreviousPokemon([]);
     setAnswers([]);
     setCurrScore(0);
-    seQuestionCount(1);
+    setQuestionCount(1);
   };
 
   useEffect(() => {
