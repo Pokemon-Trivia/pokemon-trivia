@@ -18,7 +18,7 @@ const Leaderboard = () => {
    return leaders.length > 0 ? (
       <section id="leaderboard-component">
          <h1 id="leader-header">Top Trainers!</h1>
-         <LeaderList />
+         <LeaderList leaders={leaders} />
       </section>
    )
    : <p>Loading...</p>

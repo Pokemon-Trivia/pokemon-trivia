@@ -6,6 +6,6 @@ const LeaderList = ({ leaders }) => {
    )
 }
 
-const LeaderListItem = ({ leader }) => <li>{leader.username}: {leader.score}</li>
+const LeaderListItem = ({ leader }) => <li>{leader.username}: {leader.highScore}</li>
 
 export default LeaderList;
