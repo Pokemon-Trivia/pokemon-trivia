@@ -1,15 +1,19 @@
-const QuestionScore = ({questionCount, currScore}) => {
-   return (
-      <section id="question-score">
-         <QuestionCount questionCount={questionCount} />
-         <Score currScore={currScore} />
-      </section>
-   )
-}
+const QuestionScore = ({ questionCount, currScore, timeLeft }) => {
+  return (
+    <section id="question-score">
+      <Timer timeLeft={timeLeft} />
+      <QuestionCount questionCount={questionCount} />
+      <Score currScore={currScore} />
+    </section>
+  );
+};
 
-const QuestionCount = ({questionCount}) => <p>Question {questionCount} out of 10</p>
+const Timer = ({ timeLeft }) => <p className="timer">{timeLeft} sec</p>;
 
-const Score = ({currScore}) => <p>Score: {currScore}</p>
+const QuestionCount = ({ questionCount }) => (
+  <p>Question {questionCount} out of 10</p>
+);
 
+const Score = ({ currScore }) => <p>Score: {currScore}</p>;
 
 export default QuestionScore;
