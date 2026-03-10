@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 export default router;
 
-import { createUser, findUserByUsername, getUserHighScoreById, updateHighScore } from "../db/queries/users.js";
+import { createUser, findUserByUsername, getTopLeaders, getUserHighScoreById, updateHighScore } from "../db/queries/users.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -80,6 +80,16 @@ router.put("/highscore", async(req, res, next) => {
     } else {
       return res.json(false)
     }
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.get("/leaderboard", async (req, res, next) => {
+  try {
+    const leaders = await getTopLeaders();
+    console.log("Server: ", leaders);
+    res.send(leaders)
   } catch (error) {
     next(error)
   }

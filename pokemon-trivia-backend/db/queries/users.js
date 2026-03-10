@@ -84,8 +84,8 @@ export const getTopLeaders = async () => {
     LIMIT 5
   `;
 
-  const { rows: topScores } = await db.query(sql)
+  const { rows: leaders } = await db.query(sql)
   
-  console.log(topScores)
-  return topScores
+  console.log("DB: ", leaders)
+  return leaders;
 }
