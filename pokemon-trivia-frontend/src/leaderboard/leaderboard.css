@@ -4,7 +4,7 @@ h1 {
 
 #leader-img {
    justify-self: center;
-   height: 20em;
+   height: 18em;
    border-radius: 15px;
    box-shadow: 5px 5px 8px rgb(64, 63, 63);
 }
@@ -18,23 +18,18 @@ h1 {
    width: 100%;
    justify-self: center;
    text-align: center;
+   font-size: 0.8em;
 }
 
 #leaderboard-component {
    padding: 50px;
-   width: 70em;
+   width: 50em;
    height: fit-content;
    background-color: #f0f0f0;
    border: 6px solid var(--borders);
    border-radius: 17px;
    display: grid;
-   row-gap: 2em;
-}
-
-@media screen and (max-width: 1233px) {
-   #leaderboard-component {
-      width: 50em;
-   }
+   row-gap: 1em;
 }
 
 @media screen and (max-width: 915px) {
