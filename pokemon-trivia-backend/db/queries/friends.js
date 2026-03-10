@@ -12,3 +12,28 @@ export const addFriend = async(userId, friendUserId) => {
    const friendUsername = await findUsernameById(friend.id);
    return friendUsername;
 }
+
+export const getUserFriendsById = async (id) => {
+   const sql = `
+      SELECT u.username
+      FROM friends f
+      JOIN users u ON u.id = CASE
+      WHEN f.user_id = $1 THEN f.friend_user_id
+      WHEN f.friend_user_id = $1 THEN f.user_id
+      END
+      WHERE f.user_id = $1 OR f.friend_user_id = $1
+   `;
+
+   const { rows: array } = await db.query(sql, [id]);
+   return array
+}
+
+export const getAllUsernames = async (id) => {
+   const sql = `
+      SELECT users.username FROM users
+      WHERE users.id <> $1
+   `;
+
+   const { rows: usernames } = await db.query(sql, [id])
+   return usernames;
+}
