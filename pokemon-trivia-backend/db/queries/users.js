@@ -76,3 +76,16 @@ export const updateHighScore = async ({id, newScore}) => {
 
   await db.query(sql, [id, newScore])
 }
+
+export const getTopLeaders = async () => {
+  const sql = `
+    SELECT users.username, users.high_score AS "highScore" FROM users
+    ORDER BY high_score DESC
+    LIMIT 5
+  `;
+
+  const { rows: topScores } = await db.query(sql)
+  
+  console.log(topScores)
+  return topScores
+}
