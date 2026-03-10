@@ -1,5 +1,9 @@
 const Leaderboard = () => {
-   return <h3>Trainers are in training....</h3>
+   return (
+      <section id="leaderboard-component">
+         <h1 id="leader-header">Top Trainers!</h1>
+      </section>
+   )
 }
 
 export default Leaderboard;
