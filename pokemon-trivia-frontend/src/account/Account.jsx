@@ -13,6 +13,7 @@ export default function Account() {
   const [name, setName] = useState("");
   const [savedName, setSavedName] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [savedAvatar, setSavedAvatar] = useState(null);
 
   const avatars = [trainer1, trainer2, trainer3, trainer4, trainer5, trainer6];
 
@@ -24,6 +25,7 @@ export default function Account() {
 
       setSavedName(parsed.name || null);
       setSelectedAvatar(parsed.avatar || null);
+      setSavedAvatar(parsed.avatar || null);
     }
   }, []);
 
@@ -36,6 +38,7 @@ export default function Account() {
     localStorage.setItem("trainerProfile", JSON.stringify(profile));
 
     setSavedName(name);
+    setSavedAvatar(parsed.avatar || null);
   };
 
   return (
@@ -59,6 +62,19 @@ export default function Account() {
             <h3>Name: {savedName}</h3>
           )}
         </section>
+        {savedAvatar && (
+          <section className="selectedAvatarSection">
+            <h3>Selected Avatar</h3>
+
+            <div className="selectedAvatarBox">
+              <img
+                src={savedAvatar}
+                alt="selected avatar"
+                className="selectedAvatarImage"
+              />
+            </div>
+          </section>
+        )}
 
         <section>
           <h3>Select Avatar</h3>
