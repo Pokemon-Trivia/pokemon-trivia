@@ -1,5 +1,6 @@
 :root {
   --borders: rgb(251, 209, 38);
+  /* display: flex; */
 }
 
 #root {
@@ -128,7 +129,7 @@ a {
 /* GameBoard Component Styling */
 
 #game-board {
-  margin: 0 auto;
+  margin: 2rem auto;
   padding: 50px;
   max-width: 800px;
   display: grid;
@@ -225,13 +226,14 @@ a {
 
 #question-score {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
   column-gap: 2em;
 }
 
 #question-score p {
   border: none;
   box-shadow: none;
+  white-space: nowrap;
 }
 
 #play-or-home {
@@ -511,7 +513,6 @@ a {
     inset 0 3px 6px rgba(255, 255, 255, 0.4);
 }
 
-
 @media screen and (max-width: 843px) {
   .navbar {
     width: 30em;
@@ -534,7 +535,7 @@ a {
   nav {
     justify-self: center;
   }
-  
+
   .navbar {
     grid-template-columns: none;
     align-self: start;
@@ -552,7 +553,7 @@ a {
   }
 
   #headerLogo {
-    justify-self: center
+    justify-self: center;
   }
 }
 
