@@ -14,6 +14,7 @@ export default function Account() {
   const [savedName, setSavedName] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [savedAvatar, setSavedAvatar] = useState(null);
+  const [isEditingName, setIsEditingName] = useState(false);
 
   const avatars = [trainer1, trainer2, trainer3, trainer4, trainer5, trainer6];
 
@@ -31,14 +32,15 @@ export default function Account() {
 
   const handleSave = () => {
     const profile = {
-      name,
+      name: name || savedName,
       avatar: selectedAvatar,
     };
 
     localStorage.setItem("trainerProfile", JSON.stringify(profile));
 
-    setSavedName(name);
-    setSavedAvatar(parsed.avatar || null);
+    setSavedName(profile.name);
+    setSavedAvatar(profile.avatar);
+    setIsEditingName(false);
   };
 
   return (
@@ -47,7 +49,7 @@ export default function Account() {
         <h2>User Account</h2>
 
         <section>
-          {!savedName ? (
+          {!savedName || isEditingName ? (
             <>
               <label>Enter Your Name:</label>
 
@@ -59,7 +61,19 @@ export default function Account() {
               />
             </>
           ) : (
-            <h3>Name: {savedName}</h3>
+            <div className="currentNameRow">
+              <h3>Name: {savedName}</h3>
+
+              <button
+                className="changeNameBtn"
+                onClick={() => {
+                  setIsEditingName(true);
+                  setName(savedName);
+                }}
+              >
+                Change Name
+              </button>
+            </div>
           )}
         </section>
         {savedAvatar && (
@@ -98,9 +112,9 @@ export default function Account() {
           <section>
             <h3>Your Stats</h3>
 
-            <p>Games Played: 0</p>
-            <p>High Score: 0</p>
-            <p>Accuracy: 0%</p>
+            <p>🎮 Games Played: 0</p>
+            <p>🏆 High Score: 0</p>
+            <p>🎯 Accuracy: 0%</p>
           </section>
         )}
 
