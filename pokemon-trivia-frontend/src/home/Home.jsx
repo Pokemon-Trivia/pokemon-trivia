@@ -15,9 +15,17 @@ export default function Home() {
   }, [token, navigate]);
 
   useEffect(() => {
-    const storedProfile = localStorage.getItem("trainerProfile");
+    const currentUser = localStorage.getItem("username");
+    if (!currentUser) return;
+
+    const storedProfile = localStorage.getItem(`trainerProfile_${currentUser}`);
     if (storedProfile) {
-      setProfile(JSON.parse(storedProfile));
+      const parsed = JSON.parse(storedProfile);
+      if (parsed?.name) {
+        setProfile(parsed);
+      } else {
+        setProfile(null);
+      }
     }
   }, []);
 
@@ -26,6 +34,13 @@ export default function Home() {
       <section className="welcomeSection">
         <h2>Welcome, {profile?.name || "Trainer"}!</h2>
         <p>Ready to test your Pokémon knowledge?</p>
+        {profile?.avatar && (
+          <img
+            src={profile.avatar}
+            alt="Trainer avatar"
+            className="welcomeAvatar"
+          />
+        )}
         <div className="homeCard">
           <div
             className="buttonCard startCardBtn"

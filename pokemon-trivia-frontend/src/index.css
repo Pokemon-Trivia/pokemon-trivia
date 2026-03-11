@@ -309,8 +309,21 @@ a {
 .welcomeSection p {
   font-size: 1.1rem;
   color: rgb(30, 29, 29);
-  margin-top: 0;
+  margin-top: 0.75rem;
+  margin-bottom: 2.5rem;
   font-family: Arial, sans-serif;
+}
+
+.welcomeSection {
+  position: relative;
+}
+
+.welcomeAvatar {
+  position: absolute;
+  right: 40px;
+  top: -10px;
+  width: 180px;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
 }
 
 .homeCard {
@@ -469,6 +482,12 @@ a {
   justify-self: center;
 }
 
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .navbar-header {
   justify-self: start;
 }
@@ -484,6 +503,24 @@ a {
 #headerLogo {
   width: 60px;
   height: auto;
+}
+
+#userProfile {
+  background-color: #4286ed;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  padding: 0.52rem 1.4rem;
+  cursor: pointer;
+  font-weight: bolder;
+  border: rgb(51, 80, 225) 1px solid;
+  display: inline-block;
+  box-shadow:
+    0 6px 12px rgba(97, 9, 9, 0.25),
+    inset 0 3px 6px rgba(255, 255, 255, 0.4);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 #logoutBtn {
@@ -555,7 +592,7 @@ a {
   }
 }
 
-/* User Accout Styling */
+/* User Account Styling */
 
 .accountHeader h2 {
   background: linear-gradient(#ff3b3b, #cc0000);
@@ -834,7 +871,7 @@ a {
 }
 
 .backBtn {
-  background: rgb(31, 101, 231);
+  background: #5bb5ff;
   border: 3px solid #f3c400;
   color: #ffe44d;
   text-shadow:

@@ -29,8 +29,10 @@ export default function Account() {
     trainer8,
   ];
 
+  const currentUser = localStorage.getItem("username") || "guest";
+
   useEffect(() => {
-    const storedProfile = localStorage.getItem("trainerProfile");
+    const storedProfile = localStorage.getItem(`trainerProfile_${currentUser}`);
 
     if (storedProfile) {
       const parsed = JSON.parse(storedProfile);
@@ -40,14 +42,17 @@ export default function Account() {
       setSelectedAvatar(parsed.avatar || null);
       setSavedAvatar(parsed.avatar || null);
     }
-  }, []);
+  }, [currentUser]);
 
   const handleSave = () => {
     const profile = {
       name: name || savedName,
       avatar: selectedAvatar || savedAvatar,
     };
-    localStorage.setItem("trainerProfile", JSON.stringify(profile));
+    localStorage.setItem(
+      `trainerProfile_${currentUser}`,
+      JSON.stringify(profile),
+    );
     setSavedName(profile.name);
     setSavedAvatar(profile.avatar);
     setSelectedAvatar(profile.avatar);
@@ -55,7 +60,7 @@ export default function Account() {
   };
 
   const handleCancel = () => {
-    const storedProfile = localStorage.getItem("trainerProfile");
+    const storedProfile = localStorage.getItem(`trainerProfile_${currentUser}`);
     if (storedProfile) {
       const parsed = JSON.parse(storedProfile);
       setSavedName(parsed.name || null);

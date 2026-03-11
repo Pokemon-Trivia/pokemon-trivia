@@ -26,6 +26,7 @@ export default function AuthProvider({ children }) {
 
     setToken(result.token);
     localStorage.setItem("token", result.token);
+    localStorage.setItem("username", credentials.username);
     return result;
   };
 
@@ -43,10 +44,12 @@ export default function AuthProvider({ children }) {
 
     setToken(result.token);
     localStorage.setItem("token", result.token);
+    localStorage.setItem("username", credentials.username);
     return result;
   };
 
   const logout = () => {
+    localStorage.removeItem("trainerProfile");
     setToken(null);
     localStorage.removeItem("token");
   };
