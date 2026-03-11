@@ -17,6 +17,9 @@ export default function Account() {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [savedAvatar, setSavedAvatar] = useState(null);
   const [isEditingName, setIsEditingName] = useState(false);
+  const [gamesPlayed, setGamesPlayed] = useState(0);
+  const [accuracy, setAccuracy] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   const avatars = [
     trainer1,
@@ -41,6 +44,10 @@ export default function Account() {
       setName(parsed.name || "");
       setSelectedAvatar(parsed.avatar || null);
       setSavedAvatar(parsed.avatar || null);
+
+      setGamesPlayed(parsed.gamesPlayed || 0);
+      setAccuracy(parsed.accuracy || 0);
+      setHighScore(parsed.highScore || 0);
     }
   }, [currentUser]);
 
@@ -145,13 +152,13 @@ export default function Account() {
           <section className="statsSection">
             <h3>Your Stats</h3>
             <p>
-              <span className="statIcon">🎮</span>Games Played: 0
+              <span className="statIcon">🎮</span>Games Played: {gamesPlayed}
             </p>
             <p>
-              <span className="statIcon">🏆</span>High Score: 0
+              <span className="statIcon">🏆</span>High Score: {highScore}
             </p>
             <p>
-              <span className="statIcon">🎯</span>Accuracy: 0%
+              <span className="statIcon">🎯</span>Accuracy: {accuracy}%
             </p>
           </section>
         )}
