@@ -1,0 +1,72 @@
+h1 {
+   text-align: center;
+}
+
+.medals {
+   height: 4em;
+}
+
+.top-three,
+.leader-list-item {
+   font-family: Arial, sans-serif;
+   font-weight: bold;
+   font-size: 1.2em;
+}
+
+.top-three {
+   grid-template-columns: max-content 1fr;
+}
+
+.leader-list-item {
+   grid-template-columns: none;
+   width: 100%;
+   justify-self: center;
+   text-align: center;
+}
+
+#leader-img {
+   justify-self: center;
+   height: 18em;
+   border-radius: 15px;
+   box-shadow: 5px 5px 8px rgb(64, 63, 63);
+}
+
+#leader-list {
+   width: fit-content;
+}
+
+#leaderboard-component {
+   padding: 50px;
+   width: 50em;
+   height: fit-content;
+   background-color: #f0f0f0;
+   border: 6px solid var(--borders);
+   border-radius: 17px;
+   display: grid;
+   row-gap: 1em;
+}
+
+@media screen and (max-width: 915px) {
+   #leaderboard-component {
+      width: 30em;
+   }
+
+   #leader-list-item {
+      font-size: 0.7em;
+   }
+}
+
+
+@media screen and (max-width: 593px) {
+   #leaderboard-component {
+      width: 18em;
+   }
+
+   #leader-img {
+      height: 12em;
+   }
+
+   #leader-list-item {
+      font-size: 0.3em;
+   }
+}
