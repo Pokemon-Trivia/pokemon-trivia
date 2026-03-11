@@ -57,7 +57,7 @@ h1 {
 }
 
 
-@media screen and (max-width: 915px) {
+@media screen and (max-width: 593px) {
    #leaderboard-component {
       width: 18em;
    }
