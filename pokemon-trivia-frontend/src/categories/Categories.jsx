@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { useGame } from "../game/GameContext";
 import { useEffect } from "react";
+import "./categories.css"
 
 const Categories = () => {
    const { gameCategory, setGameCategory } = useGame();
@@ -15,10 +16,10 @@ const Categories = () => {
 
    return gameCategory < 1 ? (
       <section id="categories-section">
-         <p id="type-btn" onClick={() => {
+         <p className="cat-btn" onClick={() => {
             setGameCategory(1);
          }} >Pokémon Types</p>
-         <p id="name-btn" onClick={() => {
+         <p className="cat-btn" onClick={() => {
             setGameCategory(2);
          }}>Pokémon Names</p>
       </section>
