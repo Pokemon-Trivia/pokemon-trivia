@@ -11,13 +11,15 @@ const GameProvider = ({ children }) => {
        setCurrPokemon(pokemonData);
    };
 
-   const randomId = () => {
-    const newId = Math.floor(Math.random() * 1025) + 1;
-    if (previousPokemon.includes(newId)) {
-      return randomId();
-    } else {
-      return newId;
-    }
+   const randomId = (gameCategory) => {
+      const newId = Math.floor(Math.random() * 1025) + 1;
+      if (gameCategory === 2 && currPokemon.id === newId) {
+         return randomId();
+      } else if (previousPokemon.includes(newId)) {
+         return randomId();
+      } else {
+         return newId;
+      }
    };
    
    const answerShuffle = (answerArray) => {
