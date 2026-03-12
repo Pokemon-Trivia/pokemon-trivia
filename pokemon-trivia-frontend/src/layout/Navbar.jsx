@@ -1,14 +1,23 @@
 import { NavLink, useLocation } from "react-router";
+import { useEffect, useState } from "react";
 import pokeLogo from "../assets/pokeball_header.gif";
 import pokemenTrivia from "../assets/pokemon_trivia.png";
 import { useAuth } from "../auth/AuthContext";
-import { FaHome } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 
 export default function Navbar() {
   const { token, logout } = useAuth();
   const location = useLocation();
 
-  const isHomePage = location.pathname === "/home";
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("trainerProfile");
+
+    if (stored) {
+      setProfile(JSON.parse(stored));
+    }
+  }, []);
 
   return (
     <header className="navbar">
@@ -25,6 +34,9 @@ export default function Navbar() {
       <nav>
         {token && (
           <>
+            <NavLink to="/account" id="userProfile">
+              <FaUser className="navAvatarIcon" /> User
+            </NavLink>
             <NavLink to="/login" id="logoutBtn" onClick={logout}>
               Logout
             </NavLink>
