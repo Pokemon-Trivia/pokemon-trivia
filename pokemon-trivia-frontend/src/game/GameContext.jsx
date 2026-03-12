@@ -92,7 +92,21 @@ const GameProvider = ({ children }) => {
       setQuestionCount(questionCount + 1);
   };
 
-   const value = {setGameCategory}
+   const value = {
+      currPokemon,
+      types,
+      questionCount,
+      answers,
+      setCurrPokemon,
+      setPreviousPokemon,
+      setAnswers,
+      setQuestionCount,
+      setGameCategory,
+      getRightPokemonData,
+      getPokemonTypes,
+      createAnswerList,
+      checkAnswer
+   }
    return <GameContext.Provider value={value}>{ children }</GameContext.Provider>
 }
 
