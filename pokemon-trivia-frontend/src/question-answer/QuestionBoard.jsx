@@ -9,13 +9,13 @@ import { useGame } from "../game/GameContext";
 
 const QuestionBoard = () => {
   const {
-    currPokemon, types, questionCount, answers, currScore, setCurrPokemon, setPreviousPokemon, setAnswers, setQuestionCount, setCurrScore, setGameCategory, getRightPokemonData, getPokemonTypes, createAnswerList, checkAnswer
+    currPokemon, types, questionCount, answers, currScore, gameCategory, setCurrPokemon, setPreviousPokemon, setAnswers, setQuestionCount, setCurrScore, setGameCategory, getRightPokemonData, getPokemonTypes, createAnswerList, checkAnswer
   } = useGame();
 
   const [timeLeft, setTimeLeft] = useState(10);
 
   useEffect(() => {
-    if (questionCount > 10) return;
+    if (questionCount > 10 || gameCategory === 0) return;
 
     setTimeLeft(10);
 
@@ -23,7 +23,7 @@ const QuestionBoard = () => {
       setTimeLeft((prev) => {
         if (prev === 1) {
           clearInterval(timer);
-          setQuestionCount((count) => count + 1);
+          setQuestionCount(questionCount + 1);
           return 0;
         }
         return prev - 1;
@@ -31,7 +31,7 @@ const QuestionBoard = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [questionCount]);
+  }, [questionCount, gameCategory]);
 
   const resetGame = () => {
     setCurrPokemon(null);
@@ -54,7 +54,7 @@ const QuestionBoard = () => {
     if (currPokemon && types.length > 0) createAnswerList();
   }, [currPokemon, types]);
 
-  if (!currPokemon) return <p>Loading...</p>;
+  if (!currPokemon || gameCategory < 1) return <p>Loading...</p>;
 
   return questionCount < 11 ? (
     <section id="game-board">

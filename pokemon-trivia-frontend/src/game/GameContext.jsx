@@ -99,6 +99,7 @@ const GameProvider = ({ children }) => {
       questionCount,
       answers,
       currScore,
+      gameCategory,
       setCurrPokemon,
       setPreviousPokemon,
       setAnswers,
