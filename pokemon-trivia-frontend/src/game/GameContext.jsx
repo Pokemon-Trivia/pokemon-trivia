@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { getPokemon } from "../api/questions";
 
 const GameContext = createContext()
 
@@ -9,11 +10,17 @@ const GameProvider = ({ children }) => {
    const [answers, setAnswers] = useState([]);
     const [questionCount, setQuestionCount] = useState(1);
 
-   const getPokemonData = async () => {
+   const getRightPokemonData = async () => {
        const pokeId = randomId();
        const pokemonData = await getPokemon(pokeId);
        setCurrPokemon(pokemonData);
    };
+
+   const getWrongPokemonName = async () => {
+      const pokeId = randomId();
+      const pokemonData = await getPokemon(pokeId);
+      return pokemonData.name;
+   }
 
    const randomId = () => {
       const newId = Math.floor(Math.random() * 1025) + 1;
@@ -25,6 +32,28 @@ const GameProvider = ({ children }) => {
          return newId;
       }
    };
+
+   const createAnswerList = () => {
+      let rightAnswer = ""
+      if (gameCategory === 1) {
+         rightAnswer = currPokemon.type;
+      } else if (gameCategory === 2) {
+         rightAnswer = currPokemon.name;
+      }
+
+      const wrongAnswers = [];
+      while (wrongAnswers.length < 3) {
+         if (gameCategory === 1) {
+            const newAnswer = randomTypeIndex(wrongAnswers, rightAnswer);
+         } else if (gameCategory === 2) {
+            const newAnswer = getWrongPokemonName();
+         }
+         wrongAnswers.push(newAnswer);
+      }
+      const answerList = [rightAnswer, ...wrongAnswers];
+      const randomAnswerList = answerShuffle(answerList);
+      setAnswers(randomAnswerList);
+  };
    
    const answerShuffle = (answerArray) => {
       for (let i = answerArray.length - 1; i > 0; i--) {
@@ -37,8 +66,7 @@ const GameProvider = ({ children }) => {
    const checkAnswer = (selectedAnswer) => {
       if (gameCategory === 2 && selectedAnswer === currPokemon.name) {
          setCurrScore(currScore + 1);
-      }
-      if (selectedAnswer === currPokemon.type) {
+      } else if (selectedAnswer === currPokemon.type) {
          setCurrScore(currScore + 1);
       }
       setPreviousPokemon([...previousPokemon, currPokemon.id]);
