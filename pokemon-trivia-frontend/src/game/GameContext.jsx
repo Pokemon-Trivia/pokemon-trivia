@@ -16,9 +16,10 @@ const GameProvider = ({ children }) => {
        setCurrPokemon(pokemonData);
    };
 
-   const getWrongPokemonName = async () => {
+   const getWrongPokemonName = async (wrongAnswers) => {
       const pokeId = randomId();
       const pokemonData = await getPokemon(pokeId);
+      if (wrongAnswers.includes(pokemonData.name)) getWrongPokemonName(wrongAnswers);
       return pokemonData.name;
    }
 
@@ -33,6 +34,14 @@ const GameProvider = ({ children }) => {
       }
    };
 
+   const answerShuffle = (answerArray) => {
+      for (let i = answerArray.length - 1; i > 0; i--) {
+         const j = Math.floor(Math.random() * (i + 1));
+         [answerArray[i], answerArray[j]] = [answerArray[j], answerArray[i]];
+      }
+    return answerArray;
+   };
+
    const createAnswerList = () => {
       let rightAnswer = ""
       if (gameCategory === 1) {
@@ -43,10 +52,11 @@ const GameProvider = ({ children }) => {
 
       const wrongAnswers = [];
       while (wrongAnswers.length < 3) {
+         let newAnswer = "";
          if (gameCategory === 1) {
-            const newAnswer = randomTypeIndex(wrongAnswers, rightAnswer);
+            newAnswer = randomTypeIndex(wrongAnswers, rightAnswer);
          } else if (gameCategory === 2) {
-            const newAnswer = getWrongPokemonName();
+            newAnswer = getWrongPokemonName(wrongAnswers);
          }
          wrongAnswers.push(newAnswer);
       }
@@ -54,14 +64,6 @@ const GameProvider = ({ children }) => {
       const randomAnswerList = answerShuffle(answerList);
       setAnswers(randomAnswerList);
   };
-   
-   const answerShuffle = (answerArray) => {
-      for (let i = answerArray.length - 1; i > 0; i--) {
-         const j = Math.floor(Math.random() * (i + 1));
-         [answerArray[i], answerArray[j]] = [answerArray[j], answerArray[i]];
-      }
-    return answerArray;
-   };
    
    const checkAnswer = (selectedAnswer) => {
       if (gameCategory === 2 && selectedAnswer === currPokemon.name) {
