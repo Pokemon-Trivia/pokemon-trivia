@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router";
 import { useAuth } from "../auth/AuthContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaPlay, FaTrophy, FaUserFriends } from "react-icons/fa";
 
 export default function Home() {
+  const [profile, setProfile] = useState(null);
   const { token } = useAuth();
   const navigate = useNavigate();
 
@@ -13,11 +14,33 @@ export default function Home() {
     }
   }, [token, navigate]);
 
+  useEffect(() => {
+    const currentUser = localStorage.getItem("username");
+    if (!currentUser) return;
+
+    const storedProfile = localStorage.getItem(`trainerProfile_${currentUser}`);
+    if (storedProfile) {
+      const parsed = JSON.parse(storedProfile);
+      if (parsed?.name) {
+        setProfile(parsed);
+      } else {
+        setProfile(null);
+      }
+    }
+  }, []);
+
   return (
     <div className="homePage">
       <section className="welcomeSection">
-        <h2>Welcome, Trainer!</h2>
+        <h2>Welcome, {profile?.name || "Trainer"}!</h2>
         <p>Ready to test your Pokémon knowledge?</p>
+        {profile?.avatar && (
+          <img
+            src={profile.avatar}
+            alt="Trainer avatar"
+            className="welcomeAvatar"
+          />
+        )}
         <div className="homeCard">
           <div
             className="buttonCard startCardBtn"
