@@ -44,7 +44,7 @@ export default function Home() {
         <div className="homeCard">
           <div
             className="buttonCard startCardBtn"
-            onClick={() => navigate("/question")}
+            onClick={() => navigate("/category")}
           >
             <div id="playIcon">
               <FaPlay />

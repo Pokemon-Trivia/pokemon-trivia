@@ -9,10 +9,9 @@ import { useGame } from "../game/GameContext";
 
 const QuestionBoard = () => {
   const {
-    currPokemon, types, questionCount, answers, setCurrPokemon, setPreviousPokemon, setAnswers, setQuestionCount, getRightPokemonData, getPokemonTypes, createAnswerList, checkAnswer
+    currPokemon, types, questionCount, answers, currScore, setCurrPokemon, setPreviousPokemon, setAnswers, setQuestionCount, setCurrScore, getRightPokemonData, getPokemonTypes, createAnswerList, checkAnswer
   } = useGame();
 
-  const [currScore, setCurrScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(10);
 
   useEffect(() => {

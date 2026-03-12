@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { getPokemon } from "../api/questions";
+import { getPokemon, getTypes } from "../api/questions";
 
 const GameContext = createContext()
 
@@ -9,7 +9,8 @@ const GameProvider = ({ children }) => {
    const [previousPokemon, setPreviousPokemon] = useState([]);
    const [types, setTypes] = useState([]);
    const [answers, setAnswers] = useState([]);
-    const [questionCount, setQuestionCount] = useState(1);
+   const [currScore, setCurrScore] = useState(0);
+   const [questionCount, setQuestionCount] = useState(1);
 
    const getRightPokemonData = async () => {
        const pokeId = randomId();
@@ -59,7 +60,7 @@ const GameProvider = ({ children }) => {
     return answerArray;
    };
 
-   const createAnswerList = () => {
+   const createAnswerList = async () => {
       let rightAnswer = ""
       if (gameCategory === 1) {
          rightAnswer = currPokemon.type;
@@ -73,7 +74,7 @@ const GameProvider = ({ children }) => {
          if (gameCategory === 1) {
             newAnswer = randomType(wrongAnswers, rightAnswer);
          } else if (gameCategory === 2) {
-            newAnswer = getWrongPokemonName(wrongAnswers);
+            newAnswer = await getWrongPokemonName(wrongAnswers);
          }
          wrongAnswers.push(newAnswer);
       }
@@ -97,11 +98,13 @@ const GameProvider = ({ children }) => {
       types,
       questionCount,
       answers,
+      currScore,
       setCurrPokemon,
       setPreviousPokemon,
       setAnswers,
       setQuestionCount,
       setGameCategory,
+      setCurrScore,
       getRightPokemonData,
       getPokemonTypes,
       createAnswerList,
