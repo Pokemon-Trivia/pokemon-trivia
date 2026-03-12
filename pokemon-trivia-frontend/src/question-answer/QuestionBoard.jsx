@@ -43,15 +43,17 @@ const QuestionBoard = () => {
   };
 
   useEffect(() => {
+    if (gameCategory < 1) return;
     getRightPokemonData();
   }, [questionCount]);
 
   useEffect(() => {
+    if (gameCategory !== 1) return;
     getPokemonTypes();
   }, []);
 
   useEffect(() => {
-    if (currPokemon && types.length > 0) createAnswerList();
+    if (currPokemon) createAnswerList();
   }, [currPokemon, types]);
 
   if (!currPokemon || gameCategory < 1) return <p>Loading...</p>;
