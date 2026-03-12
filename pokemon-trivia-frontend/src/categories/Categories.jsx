@@ -1,8 +1,10 @@
 const Categories = () => {
    return (
       <section id="categories-section">
-         <p>Pokémon Types</p>
-         <p>Pokémon Names</p>
+         <p id="type-btn">Pokémon Types</p>
+         <p id="name-btn" >Pokémon Names</p>
       </section>
    )
 }
+
+export default Categories;
