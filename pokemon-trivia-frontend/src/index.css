@@ -188,10 +188,11 @@ a {
 }
 
 #game-board li {
+  grid-template-columns: none;
   padding: 30px 50px;
   font-family: "Press Start 2P", system-ui;
   font-size: 0.8em;
-  width: 8em;
+  width: fit-content;
   justify-self: center;
 }
 

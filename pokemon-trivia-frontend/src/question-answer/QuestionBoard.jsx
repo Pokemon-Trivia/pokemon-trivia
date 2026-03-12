@@ -5,18 +5,20 @@ import AnswerList from "./AnswerList";
 import { getPokemon, getTypes } from "../api/questions";
 import QuestionScore from "./QuestionScore";
 import GameResults from "./GameResults";
+import { useGame } from "../game/GameContext";
 
 const QuestionBoard = () => {
-  const [currPokemon, setCurrPokemon] = useState(null);
-  const [previousPokemon, setPreviousPokemon] = useState([]);
-  const [answers, setAnswers] = useState([]);
-  const [types, setTypes] = useState([]);
-  const [currScore, setCurrScore] = useState(0);
-  const [questionCount, setQuestionCount] = useState(1);
+  const {
+    currPokemon, types, questionCount, answers, currScore, gameCategory,
+    setCurrPokemon, setPreviousPokemon, setAnswers, setQuestionCount,
+    setCurrScore, setGameCategory, getRightPokemonData, getPokemonTypes,
+    createAnswerList, checkAnswer
+  } = useGame();
+
   const [timeLeft, setTimeLeft] = useState(10);
 
   useEffect(() => {
-    if (questionCount > 10) return;
+    if (questionCount > 10 || gameCategory === 0) return;
 
     setTimeLeft(10);
 
@@ -24,7 +26,7 @@ const QuestionBoard = () => {
       setTimeLeft((prev) => {
         if (prev === 1) {
           clearInterval(timer);
-          setQuestionCount((count) => count + 1);
+          setQuestionCount(questionCount + 1);
           return 0;
         }
         return prev - 1;
@@ -32,88 +34,32 @@ const QuestionBoard = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [questionCount]);
-
-  const getPokemonData = async () => {
-    const pokeId = randomId();
-    const pokemonData = await getPokemon(pokeId);
-    setCurrPokemon(pokemonData);
-  };
-
-  const randomId = () => {
-    const newId = Math.floor(Math.random() * 1025) + 1;
-    if (previousPokemon.includes(newId)) {
-      return randomId();
-    } else {
-      return newId;
-    }
-  };
-
-  const randomTypeIndex = (array, rightAnswer) => {
-    const newTypeIndex = Math.floor(Math.random() * 18);
-    if (
-      array.includes(types[newTypeIndex]) ||
-      types[newTypeIndex] === rightAnswer
-    ) {
-      return randomTypeIndex(array, rightAnswer);
-    } else {
-      return types[newTypeIndex];
-    }
-  };
-
-  const getPokemonTypes = async () => {
-    setTypes(await getTypes());
-  };
-
-  const answerShuffle = (answerArray) => {
-    for (let i = answerArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [answerArray[i], answerArray[j]] = [answerArray[j], answerArray[i]];
-    }
-    return answerArray;
-  };
-
-  const createAnswerList = () => {
-    const rightAnswer = currPokemon.type;
-    const wrongAnswers = [];
-    while (wrongAnswers.length < 3) {
-      const newType = randomTypeIndex(wrongAnswers, rightAnswer);
-      wrongAnswers.push(newType);
-    }
-    const answerList = [rightAnswer, ...wrongAnswers];
-    const randomAnswerList = answerShuffle(answerList);
-    setAnswers(randomAnswerList);
-  };
-
-  const checkAnswer = (selectedType) => {
-    if (selectedType === currPokemon.type) {
-      setCurrScore(currScore + 1);
-    }
-    setPreviousPokemon([...previousPokemon, currPokemon.id]);
-    setQuestionCount((count) => count + 1);
-  };
+  }, [questionCount, gameCategory]);
 
   const resetGame = () => {
     setCurrPokemon(null);
     setPreviousPokemon([]);
     setAnswers([]);
     setCurrScore(0);
+    setGameCategory(0);
     setQuestionCount(1);
   };
 
   useEffect(() => {
-    getPokemonData();
+    if (gameCategory < 1) return;
+    getRightPokemonData();
   }, [questionCount]);
 
   useEffect(() => {
+    if (gameCategory !== 1) return;
     getPokemonTypes();
   }, []);
 
   useEffect(() => {
-    if (currPokemon && types.length > 0) createAnswerList();
+    if (currPokemon) createAnswerList();
   }, [currPokemon, types]);
 
-  if (!currPokemon) return <p>Loading...</p>;
+  if (!currPokemon || gameCategory < 1) return <p>Loading...</p>;
 
   return questionCount < 11 ? (
     <section id="game-board">

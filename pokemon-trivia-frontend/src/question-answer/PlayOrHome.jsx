@@ -5,8 +5,14 @@ const PlayOrHome = ({resetGame}) => {
    const navigate = useNavigate()
    return (
       <section id="play-or-home">
-         <button id="play-again" className="quiz-btn" onClick={() => resetGame()}><FaRotateRight className="quiz-icon" />Play Again</button>
-         <button id="return-home" className="quiz-btn" onClick={() => navigate('/home')}><FaHouseUser className="quiz-icon" />Home</button>
+         <button id="play-again" className="quiz-btn" onClick={() => {
+            resetGame();
+            navigate("/category");
+         }}><FaRotateRight className="quiz-icon" />Play Again</button>
+         <button id="return-home" className="quiz-btn" onClick={() => {
+            resetGame();
+            navigate('/home');
+         }}><FaHouseUser className="quiz-icon" />Home</button>
       </section>
    )
 }
