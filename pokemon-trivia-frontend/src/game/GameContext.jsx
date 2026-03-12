@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 const GameContext = createContext()
 
 const GameProvider = ({ children }) => {
-   const [gameCategory, setGameCategory] = useState(null);
+   const [gameCategory, setGameCategory] = useState(0);
 
    const typesGame = {}
    const namesGame = {}
