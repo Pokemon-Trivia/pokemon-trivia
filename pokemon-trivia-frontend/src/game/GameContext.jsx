@@ -3,6 +3,10 @@ import { createContext, useContext } from "react";
 const GameContext = createContext()
 
 const GameProvider = ({ children }) => {
+   
+   const typesGame = {}
+   const namesGame = {}
+
    const value = {}
    return <GameContext.Provider value={value}>{ children }</GameContext.Provider>
 }
