@@ -21,7 +21,7 @@ const GameProvider = ({ children }) => {
    const getWrongPokemonName = async (wrongAnswers) => {
       const pokeId = randomId();
       const pokemonData = await getPokemon(pokeId);
-      if (wrongAnswers.includes(pokemonData.name)) getWrongPokemonName(wrongAnswers);
+      if (wrongAnswers.includes(pokemonData.name)) await getWrongPokemonName(wrongAnswers);
       return pokemonData.name;
    }
 
@@ -43,7 +43,7 @@ const GameProvider = ({ children }) => {
 
    const randomId = () => {
       const newId = Math.floor(Math.random() * 1025) + 1;
-      if (gameCategory === 2 && currPokemon.id === newId) {
+      if (gameCategory === 2 && currPokemon?.id === newId) {
          return randomId();
       } else if (previousPokemon.includes(newId)) {
          return randomId();
@@ -105,6 +105,7 @@ const GameProvider = ({ children }) => {
       setQuestionCount,
       setGameCategory,
       setCurrScore,
+      setGameCategory,
       getRightPokemonData,
       getPokemonTypes,
       createAnswerList,

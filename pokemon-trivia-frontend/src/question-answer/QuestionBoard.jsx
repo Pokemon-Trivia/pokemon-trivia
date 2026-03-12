@@ -9,7 +9,7 @@ import { useGame } from "../game/GameContext";
 
 const QuestionBoard = () => {
   const {
-    currPokemon, types, questionCount, answers, currScore, setCurrPokemon, setPreviousPokemon, setAnswers, setQuestionCount, setCurrScore, getRightPokemonData, getPokemonTypes, createAnswerList, checkAnswer
+    currPokemon, types, questionCount, answers, currScore, setCurrPokemon, setPreviousPokemon, setAnswers, setQuestionCount, setCurrScore, setGameCategory, getRightPokemonData, getPokemonTypes, createAnswerList, checkAnswer
   } = useGame();
 
   const [timeLeft, setTimeLeft] = useState(10);
@@ -33,17 +33,12 @@ const QuestionBoard = () => {
     return () => clearInterval(timer);
   }, [questionCount]);
 
-  const getPokemonData = async () => {
-    const pokeId = randomId();
-    const pokemonData = await getPokemon(pokeId);
-    setCurrPokemon(pokemonData);
-  };
-
   const resetGame = () => {
     setCurrPokemon(null);
     setPreviousPokemon([]);
     setAnswers([]);
     setCurrScore(0);
+    setGameCategory(0);
     setQuestionCount(1);
   };
 
