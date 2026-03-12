@@ -1,13 +1,14 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const GameContext = createContext()
 
 const GameProvider = ({ children }) => {
-   
+   const [gameCategory, setGameCategory] = useState(null);
+
    const typesGame = {}
    const namesGame = {}
 
-   const value = {}
+   const value = {setGameCategory}
    return <GameContext.Provider value={value}>{ children }</GameContext.Provider>
 }
 
