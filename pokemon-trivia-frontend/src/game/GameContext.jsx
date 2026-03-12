@@ -4,6 +4,10 @@ const GameContext = createContext()
 
 const GameProvider = ({ children }) => {
    const [gameCategory, setGameCategory] = useState(0);
+   const [currPokemon, setCurrPokemon] = useState(null);
+   const [previousPokemon, setPreviousPokemon] = useState([]);
+   const [answers, setAnswers] = useState([]);
+    const [questionCount, setQuestionCount] = useState(1);
 
    const getPokemonData = async () => {
        const pokeId = randomId();
@@ -11,7 +15,7 @@ const GameProvider = ({ children }) => {
        setCurrPokemon(pokemonData);
    };
 
-   const randomId = (gameCategory) => {
+   const randomId = () => {
       const newId = Math.floor(Math.random() * 1025) + 1;
       if (gameCategory === 2 && currPokemon.id === newId) {
          return randomId();
@@ -23,11 +27,22 @@ const GameProvider = ({ children }) => {
    };
    
    const answerShuffle = (answerArray) => {
-    for (let i = answerArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [answerArray[i], answerArray[j]] = [answerArray[j], answerArray[i]];
-    }
+      for (let i = answerArray.length - 1; i > 0; i--) {
+         const j = Math.floor(Math.random() * (i + 1));
+         [answerArray[i], answerArray[j]] = [answerArray[j], answerArray[i]];
+      }
     return answerArray;
+   };
+   
+   const checkAnswer = (selectedAnswer) => {
+      if (gameCategory === 2 && selectedAnswer === currPokemon.name) {
+         setCurrScore(currScore + 1);
+      }
+      if (selectedAnswer === currPokemon.type) {
+         setCurrScore(currScore + 1);
+      }
+      setPreviousPokemon([...previousPokemon, currPokemon.id]);
+      setQuestionCount(questionCount + 1);
   };
 
    const value = {setGameCategory}
