@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+
 import trainer1 from "../assets/avatars/avatar1.png";
 import trainer2 from "../assets/avatars/avatar2.png";
 import trainer3 from "../assets/avatars/avatar3.png";
@@ -9,6 +10,10 @@ import trainer6 from "../assets/avatars/avatar6.png";
 import trainer7 from "../assets/avatars/avatar7.png";
 import trainer8 from "../assets/avatars/avatar8.png";
 
+import UserName from "./UserName";
+import AvatarSection from "./AvatarSection";
+import Stats from "./Stats";
+
 export default function Account() {
   const navigate = useNavigate();
 
@@ -17,6 +22,7 @@ export default function Account() {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [savedAvatar, setSavedAvatar] = useState(null);
   const [isEditingName, setIsEditingName] = useState(false);
+
   const [gamesPlayed, setGamesPlayed] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
   const [highScore, setHighScore] = useState(0);
@@ -56,10 +62,12 @@ export default function Account() {
       name: name || savedName,
       avatar: selectedAvatar || savedAvatar,
     };
+
     localStorage.setItem(
       `trainerProfile_${currentUser}`,
       JSON.stringify(profile),
     );
+
     setSavedName(profile.name);
     setSavedAvatar(profile.avatar);
     setSelectedAvatar(profile.avatar);
@@ -68,8 +76,10 @@ export default function Account() {
 
   const handleCancel = () => {
     const storedProfile = localStorage.getItem(`trainerProfile_${currentUser}`);
+
     if (storedProfile) {
       const parsed = JSON.parse(storedProfile);
+
       setSavedName(parsed.name || null);
       setName(parsed.name || "");
       setSelectedAvatar(parsed.avatar || null);
@@ -86,81 +96,27 @@ export default function Account() {
           <h2>User Account</h2>
         </div>
 
-        <section>
-          {!savedName || isEditingName ? (
-            <>
-              <label>Enter Your Name:</label>
+        <UserName
+          savedName={savedName}
+          name={name}
+          setName={setName}
+          isEditingName={isEditingName}
+          setIsEditingName={setIsEditingName}
+        />
 
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Enter your name"
-              />
-            </>
-          ) : (
-            <div className="currentNameRow">
-              <h3>
-                Name: <span className="playerName">{savedName}</span>
-              </h3>
-
-              <button
-                className="changeNameBtn"
-                onClick={() => {
-                  setIsEditingName(true);
-                  setName(savedName);
-                }}
-              >
-                Change Name
-              </button>
-            </div>
-          )}
-        </section>
-        {savedAvatar && (
-          <section className="selectedAvatarSection">
-            <h3>Selected Avatar</h3>
-
-            <div className="selectedAvatarBox">
-              <img
-                src={selectedAvatar || savedAvatar}
-                alt="selected avatar"
-                className="selectedAvatarImage"
-              />
-            </div>
-          </section>
-        )}
-
-        <section>
-          <h3>All Avatars</h3>
-
-          <div className="avatarGrid">
-            {avatars.map((avatar, index) => (
-              <img
-                key={index}
-                src={avatar}
-                alt="trainer avatar"
-                className={
-                  selectedAvatar === avatar ? "avatar selected" : "avatar"
-                }
-                onClick={() => setSelectedAvatar(avatar)}
-              />
-            ))}
-          </div>
-        </section>
+        <AvatarSection
+          avatars={avatars}
+          selectedAvatar={selectedAvatar}
+          savedAvatar={savedAvatar}
+          setSelectedAvatar={setSelectedAvatar}
+        />
 
         {savedName && (
-          <section className="statsSection">
-            <h3>Your Stats</h3>
-            <p>
-              <span className="statIcon">🎮</span>Games Played: {gamesPlayed}
-            </p>
-            <p>
-              <span className="statIcon">🏆</span>High Score: {highScore}
-            </p>
-            <p>
-              <span className="statIcon">🎯</span>Accuracy: {accuracy}%
-            </p>
-          </section>
+          <Stats
+            gamesPlayed={gamesPlayed}
+            highScore={highScore}
+            accuracy={accuracy}
+          />
         )}
 
         <section className="accountButtons">
@@ -171,9 +127,11 @@ export default function Account() {
           >
             SAVE
           </button>
+
           <button className="cancelBtn" onClick={handleCancel}>
             CANCEL
           </button>
+
           <button className="backBtn" onClick={() => navigate("/home")}>
             BACK
           </button>
