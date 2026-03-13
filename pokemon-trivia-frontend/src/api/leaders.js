@@ -4,6 +4,5 @@ export const getLeaders = async () => {
    if (!response.ok) {
       throw new Error(result.message);
    }
-   console.log("Front API Call: ", result)
    return result;
 }
