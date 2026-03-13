@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../auth/AuthContext";
 import { useEffect, useState } from "react";
 import { FaPlay, FaTrophy, FaUserFriends } from "react-icons/fa";
+import defaultAvatar from "../assets/pikachu.png";
 
 export default function Home() {
   const [profile, setProfile] = useState(null);
@@ -34,13 +35,11 @@ export default function Home() {
       <section className="welcomeSection">
         <h2>Welcome, {profile?.name || "Trainer"}!</h2>
         <p>Ready to test your Pokémon knowledge?</p>
-        {profile?.avatar && (
-          <img
-            src={profile.avatar}
-            alt="Trainer avatar"
-            className="welcomeAvatar"
-          />
-        )}
+        <img
+          src={profile?.avatar || defaultAvatar}
+          alt="Trainer avatar"
+          className={profile?.avatar ? "welcomeAvatar" : "welcomeAvatarDefault"}
+        />
         <div className="homeCard">
           <div
             className="buttonCard startCardBtn"
