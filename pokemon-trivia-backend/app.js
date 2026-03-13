@@ -2,6 +2,9 @@ import express from "express";
 const app = express();
 export default app;
 
+import cors from "cors";
+app.use(cors({origin: "https://pokemon-trivia-fs.netlify.app/"}))
+
 import userRouter from "./api/users.js";
 import friendsRouter from "./api/friends.js";
 
