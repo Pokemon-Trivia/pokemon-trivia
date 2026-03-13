@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "node pokemon-trivia-backend/server.js",
-    "db:schema": "psql -d $DATABASE_URL -f pokemon-trivia-backend/db/schema.sql",
+    "db:schema": "psql $DATABASE_URL -f pokemon-trivia-backend/db/schema.sql",
     "db:seed": "node pokemon-trivia-backend/db/seed.js",
     "db:reset": "npm run db:schema && npm run db:seed"
   },
