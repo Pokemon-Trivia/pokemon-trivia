@@ -13,7 +13,7 @@ export default function AuthProvider({ children }) {
   }, []);
 
   const register = async (credentials) => {
-    const response = await fetch("/api/users/register", {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),
@@ -31,7 +31,7 @@ export default function AuthProvider({ children }) {
   };
 
   const login = async (credentials) => {
-    const response = await fetch("/api/users/login", {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),

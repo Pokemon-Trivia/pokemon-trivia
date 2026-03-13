@@ -1,5 +1,5 @@
 export const getFriends = async (token) => {
-   const response = await fetch("/api/friends", {
+   const response = await fetch(`${import.meta.env.VITE_API_URL}/api/friends`, {
       method: "GET",
       headers: {
          "Content-Type": "application/json",
@@ -15,7 +15,7 @@ export const getFriends = async (token) => {
 }
 
 export const getUsernames = async (token) => {
-   const response = await fetch("/api/friends/search", {
+   const response = await fetch(`${import.meta.env.VITE_API_URL}/api/friends/search`, {
       method: "GET",
       headers: {
          "Conetent-Type": "application/json",
@@ -30,7 +30,7 @@ export const getUsernames = async (token) => {
 }
 
 export const addNewFriend = async (friendInfo) => {
-   const response = await fetch("/api/friends/add", {
+   const response = await fetch(`${import.meta.env.VITE_API_URL}/api/friends/add`, {
       method: "POST",
       headers: {
          "Content-Type": "application/json",

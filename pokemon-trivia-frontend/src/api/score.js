@@ -1,5 +1,5 @@
 export const sendScore = async(scoreInfo) => {
-   const response = await fetch("/api/users/highscore", {
+   const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/highscore`, {
       method: "PUT",
       headers: {
          "Content-Type": "application/json",
