@@ -47,7 +47,7 @@ export const addNewFriend = async (friendInfo) => {
 }
 
 export const deleteFriend = async({token, friendUsername}) => {
-   const response = await fetch("/api/friends/delete", {
+   const response = await fetch(`${import.meta.env.VITE_API_URL}/api/friends/delete`, {
       method: "DELETE",
       headers: {
          "Content-Type": "application/json",
@@ -60,6 +60,5 @@ export const deleteFriend = async({token, friendUsername}) => {
    if (!response.ok) {
       throw new Error(result.message)
    }
-   console.log("FETCH ", result)
    return result
 }

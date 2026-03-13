@@ -112,7 +112,7 @@ button:active {
    text-shadow: 2px 2px 0 black;
 }
 
-#delete-friend {
+.delete-friend {
    padding: 1em;
    background-color: #cc0000;
    color: white;

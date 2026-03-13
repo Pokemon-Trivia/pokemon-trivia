@@ -2,6 +2,7 @@ import {
   addFriend,
   getAllUsernames,
   getUserFriendsById,
+  deleteFriendByIds
 } from "#pokemon-trivia-backend/db/queries/friends";
 import {
   findUserIdByUsername,

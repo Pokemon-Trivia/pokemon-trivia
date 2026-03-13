@@ -21,7 +21,7 @@ const FriendsList = ({ friends, tryGetFriends }) => {
 const FriendsListItem = ({ friend, tryDeleteFriend }) => {
    return (
       <li className="friends-items">
-         {friend} <button id="delete-friend" onClick={() => tryDeleteFriend(friend)}>Delete</button>
+         {friend} <button className="delete-friend" onClick={() => tryDeleteFriend(friend)}>Delete</button>
       </li>
    )
 }
