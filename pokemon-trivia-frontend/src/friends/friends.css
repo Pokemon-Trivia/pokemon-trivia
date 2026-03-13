@@ -56,10 +56,6 @@ button:active {
    box-shadow: 2px 2px 0 black;
 }
 
-.friends-items {
-   grid-template-columns: none;
-}
-
 #friends {
    padding: 50px;
    max-width: 800px;
@@ -114,4 +110,10 @@ button:active {
    background-color: #cc0000;
    color: white;
    text-shadow: 2px 2px 0 black;
+}
+
+#delete-friend {
+   padding: 1em;
+   background-color: #cc0000;
+   color: white;
 }
