@@ -9,7 +9,6 @@ const Leaderboard = () => {
 
    const tryGetLeaders = async () => {
       const topLeaders = await getLeaders();
-      console.log("Component: ", topLeaders)
       setLeaders(topLeaders)
    }
 

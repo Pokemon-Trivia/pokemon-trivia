@@ -88,7 +88,6 @@ router.put("/highscore", async(req, res, next) => {
 router.get("/leaderboard", async (req, res, next) => {
   try {
     const leaders = await getTopLeaders();
-    console.log("Server: ", leaders);
     res.send(leaders)
   } catch (error) {
     next(error)

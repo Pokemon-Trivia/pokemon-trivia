@@ -86,6 +86,5 @@ export const getTopLeaders = async () => {
 
   const { rows: leaders } = await db.query(sql)
   
-  console.log("DB: ", leaders)
   return leaders;
 }
