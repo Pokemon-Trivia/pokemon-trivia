@@ -15,6 +15,7 @@ import Categories from "./categories/Categories.jsx";
 function App() {
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route element={<GameProvider><Outlet /></GameProvider>}>
