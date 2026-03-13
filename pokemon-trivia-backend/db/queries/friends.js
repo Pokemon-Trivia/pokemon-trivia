@@ -28,6 +28,15 @@ export const getUserFriendsById = async (id) => {
    return array
 }
 
+export const deleteFriendByIds = async (userId, friendUserId) => {
+   const sql = `
+      DELETE FROM friends
+      WHERE (user_id = $1 AND friend_user_id = $2)
+      OR (user_id = $2 AND friend_user_id = $1)
+   `;
+   await db.query(sql, [userId, friendUserId])
+}
+
 export const getAllUsernames = async (id) => {
    const sql = `
       SELECT users.username FROM users
