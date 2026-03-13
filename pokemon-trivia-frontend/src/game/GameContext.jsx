@@ -104,7 +104,6 @@ const GameProvider = ({ children }) => {
       setPreviousPokemon,
       setAnswers,
       setQuestionCount,
-      setGameCategory,
       setCurrScore,
       setGameCategory,
       getRightPokemonData,
