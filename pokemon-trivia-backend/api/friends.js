@@ -2,6 +2,7 @@ import {
   addFriend,
   getAllUsernames,
   getUserFriendsById,
+  deleteFriendByIds
 } from "#pokemon-trivia-backend/db/queries/friends";
 import {
   findUserIdByUsername,
@@ -56,3 +57,16 @@ friendsRouter.post("/add", async (req, res, next) => {
     next(error);
   }
 });
+
+friendsRouter.delete("/delete", async (req, res, next) => {
+  try {
+    const user = req.user;
+    const userId = user.id;
+    const { friendUsername } = req.body;
+    const friendUserId = await findUserIdByUsername(friendUsername);
+    await deleteFriendByIds(userId, friendUserId)
+    res.json(friendUsername);
+  } catch (error) {
+    next(error)
+  }
+})

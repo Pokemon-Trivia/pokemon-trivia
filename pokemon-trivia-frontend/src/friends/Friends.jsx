@@ -40,7 +40,7 @@ const Friends = () => {
       <FriendsHeader friends={friends} />
       <FriendSearch findFriends={findFriends} />  
       <h2>My Friends:</h2>
-      <FriendsList friends={friends} />
+      <FriendsList tryGetFriends={tryGetFriends} friends={friends} />
     </section>
   )
      : (
